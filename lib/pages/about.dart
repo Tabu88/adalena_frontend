@@ -57,7 +57,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                                 flex: 2,
                                 child: Image.asset(
                                   "assets/images/Blue House bottom text.png",
-                                  height: 100,
+                                  height: 150,
                                   width: 220,
                                 ),),
                               const Expanded(flex: 2,child: SizedBox(),),
@@ -382,12 +382,8 @@ class _AboutWidgetsState extends State<AboutWidgets> {
           ),
         ),
         SliverToBoxAdapter(
-          child: width > 700
-              ?Container(
-            color: Color(Constants.primaryWhite()),
-            height: 500,
-            width: 700,
-            child: Column(
+          child: width > 800
+              ? Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
@@ -424,19 +420,15 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                       ),
                     )
                   ],
-                )
+                ),
+                const SizedBox(height: 50,)
               ],
-            ),
-          )
-              :Container(
-            color: Color(Constants.primaryWhite()),
-            height: 500,
-            width: 900,
-            child: Column(
+            )
+              : Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Text(
                           "Meet Our Founders",
                           style: TextStyle(
@@ -449,6 +441,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                       Container(
                         height: 400,
                         width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                         child: Image.asset(
                           "assets/images/adalena_exp.png",
                           fit: BoxFit.cover,
@@ -458,8 +451,9 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                         height: 25,
                       ),
                       Container(
-                        height: 150,
+                        height: 250,
                         width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                         child: Text(
                           "Lorem ipsum dolor sit amet consectetur. Magna leo enim sit massa mi nunc mauris. Commodo quam in ut pulvinar ullamcorper amet massa fusce tincidunt. Iaculis cras cursus duis duis. Dis nibh cras amet dignissim.",
                           style: TextStyle(
@@ -471,7 +465,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                       // const SizedBox(height: 25,),
                     ],
                   ),
-                ),
+
         ),
         const SliverToBoxAdapter(
             child: ClipRRect(child: FooterWidget())

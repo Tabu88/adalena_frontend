@@ -2,6 +2,7 @@ import 'package:adult_family_home/controller/adalena_controller.dart';
 import 'package:adult_family_home/widgets/form_label_widget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -31,6 +32,19 @@ class _ContactWidgetsState extends State<ContactWidgets> {
   String? _selectedMedia;
   _init(){
     // _adalenaController.resetController();
+  }
+
+  void _copyText(BuildContext context, String textToCopy) {
+    Clipboard.setData(ClipboardData(text: textToCopy));
+    ScaffoldMessenger.of(context).showSnackBar(
+       const SnackBar(
+         behavior: SnackBarBehavior.floating,
+        content: Text('Copied to clipboard!'),
+        width: 250,
+        padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+         duration: Duration(seconds: 3),
+       ),
+    );
   }
 
 
@@ -106,7 +120,7 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                 flex: 2,
                                 child: Image.asset(
                                   "assets/images/Blue House bottom text.png",
-                                  height: 100,
+                                  height: 150,
                                   width: 220,
                                 ),),
                               const Expanded(flex: 2,child: SizedBox(),),
@@ -587,9 +601,11 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                           width: 15,
                                         ),
                                         TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            _copyText(context, "206-806-3698");
+                                          },
                                           child: Text(
-                                            "425-775-4440",
+                                            "206-806-3698",
                                             style: TextStyle(
                                                 fontSize: 22,
                                                 color: Color(Constants.primaryBlue()),
@@ -617,9 +633,11 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                           width: 15,
                                         ),
                                         TextButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            _copyText(context, "adalenaafh@gmail.com");
+                                          },
                                           child:  Text(
-                                            "adalenafamilyhome@gmail.com",
+                                            "adalenaafh@gmail.com",
                                             style: TextStyle(
                                                 fontSize: 22,
                                                 color: Color(Constants.primaryBlue()),
@@ -715,9 +733,11 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                     width: 15,
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _copyText(context, "206-806-3698");
+                                    },
                                     child:  Text(
-                                      "425-775-4440",
+                                      "206-806-3698",
                                       style: TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.bold,
@@ -744,7 +764,9 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                     width: 15,
                                   ),
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      _copyText(context, "adalenaafh@gmail.com");
+                                    },
                                     child:  Text(
                                       "adalenafamilyhome@gmail.com",
                                       style: TextStyle(

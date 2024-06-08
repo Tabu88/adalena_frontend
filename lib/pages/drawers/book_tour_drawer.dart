@@ -1,10 +1,14 @@
 import 'package:adult_family_home/controller/adalena_controller.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
 
 import '../../controller/web_navigation_controller.dart';
 import '../../helpers/constants.dart';
+import '../../helpers/widget_helper.dart';
 
 class BookTourDrawer extends StatefulWidget {
   const BookTourDrawer({super.key});
@@ -17,19 +21,97 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
   final WebNavigationController webNavigationController = Get.put(WebNavigationController());
   final AdalenaController _adalenaController = Get.put(AdalenaController());
    bool isSelected = false;
+  DateTime? _tourDate;
+  final _formKey = GlobalKey<FormState>();
    int _currentStep = 0;
    bool _firstList = true;
+   bool isLoading = false;
 
-   void _switchStepList() {
-     setState(() {
-       _firstList = !_firstList;
-       _currentStep = 0;
-     });
+   void _init(){
+     _adalenaController.resetController();
    }
 
+   @override
+  void initState() {
+    Future.delayed(Duration.zero, _init);
+    super.initState();
+  }
+
+
+   void validateStep(int step)  {
+    isLoading = true;
+    switch (step){
+      case 0:
+        if (_adalenaController.bookTour.value.isEmpty) {
+          _adalenaController.validateError.value = "Select type of tour";
+        } else {
+           setState(() {
+             _currentStep +=1;
+           });
+        }
+        break;
+      case 1:
+        if (_adalenaController.bookPersonOfInterest.value.isEmpty) {
+          _adalenaController.validateError.value = "Select person of interest";
+        } else {
+          setState(() {
+            _currentStep +=1;
+          });
+        }
+        break;
+      case 2:
+        if (_adalenaController.bookTimeline.value.isEmpty) {
+          _adalenaController.validateError.value = "Select timeline of your stay";
+        } else {
+          setState(() {
+            _currentStep +=1;
+          });
+        }
+        break;
+      case 3:
+        if (_adalenaController.bookFeature.value.isEmpty) {
+          _adalenaController.validateError.value = "Select feature of your stay";
+        } else {
+          setState(() {
+            _currentStep +=1;
+          });
+        }
+        break;
+      case 4:
+        if (_adalenaController.bookDateTime.value.isEmpty) {
+          _adalenaController.validateError.value = "Select date & time of your stay";
+        } else {
+          setState(() {
+            _currentStep +=1;
+          });
+        }
+        break;
+      case 5:
+        if (_adalenaController.bookMedia.value.isEmpty) {
+          _adalenaController.validateError.value = "Select media";
+        } else {
+          setState(() {
+            _currentStep +=1;
+          });
+        }
+        break;
+      case 6:
+        if (_formKey.currentState!.validate()) {
+          setState(() {
+            _currentStep +=1;
+          });
+        } else {
+
+        }
+        break;
+    }
+
+    isLoading = false;
+  }
 
   @override
   Widget build(BuildContext context) {
+     _adalenaController.validateError.value = "";
     return  Drawer(
       backgroundColor: Color(Constants.primaryWhite()),
       width: double.infinity,
@@ -58,21 +140,12 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               child: Center(
                 child: Stepper(
                   type: StepperType.vertical,
-                  steps: _firstList ? getFirstSteps() : getSecondSteps(),
+                  steps: getFirstSteps(),
                   currentStep: _currentStep,
-                  onStepContinue: () {
-                   if(_currentStep < (_firstList ? getFirstSteps().length : getSecondSteps().length) - 1){
-                     setState(() {
-                       _currentStep += 1;
-                     });
-                   } else if(_currentStep >= getSecondSteps().length - 1){
-                     setState(() {
-                       _switchStepList();
-                     });
-                   } else {
-                     //print("Completed");
-                     Get.back();
-                   }
+                  onStepContinue: ()  {
+                    validateStep(_currentStep);
+                    print("passed here: currentStep is $_currentStep");
+                    print(_adalenaController.validateError.value);
                   },
                   onStepTapped: (step){
                     setState(() {
@@ -80,10 +153,12 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                     });
                   },
                   onStepCancel: () {
-
+                    setState(() {
+                      _currentStep -= 1;
+                    });
                   },
                   controlsBuilder: (context, details){
-                    if(_firstList == false && _currentStep >= getSecondSteps().length - 1){
+                    if(_currentStep >= getFirstSteps().length - 1){
                       return const SizedBox();
                     } else {
                       return Row(
@@ -97,12 +172,15 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                                 )
                             ),
                               onPressed: details.onStepContinue,
-                              child: const Text(
-                                "Next",
+                              child:  isLoading
+                              ? const CircularProgressIndicator(backgroundColor: Colors.white,)
+                                  : const Text(
+                                "Next" ,
                                 style: TextStyle(
                                   color: Colors.white
                                 ),
                               )
+
                           ),
                           const SizedBox(width: 12,),
                           OutlinedButton(
@@ -134,7 +212,6 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
           )
         ],
       )
-
     );
   }
 
@@ -212,6 +289,8 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 ),
               ),
             ),
+             Obx(()=>
+             SizedBox(height: 40,child: Text("${_adalenaController.validateError.value}",style: TextStyle(color: Colors.red),),))
           ],
         ),
       )
@@ -384,6 +463,8 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 ),
               ),
             ),
+            Obx(()=>
+                SizedBox(height: 40,child: Text(_adalenaController.validateError.value,style: const TextStyle(color: Colors.red),),))
           ],
         ),
       )
@@ -508,6 +589,8 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 ),
               ),
             ),
+            Obx(()=>
+                SizedBox(height: 40,child: Text(_adalenaController.validateError.value,style: const TextStyle(color: Colors.red),),))
           ],
         ),
       )
@@ -584,17 +667,15 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 ),
               ),
             ),
+            Obx(()=>
+                SizedBox(height: 40,child: Text(_adalenaController.validateError.value,style: const TextStyle(color: Colors.red),),))
           ],
         ),
       )
-    ),//feature*
-   //personal details
-  ];
-
-  List<Step> getSecondSteps()=> [
+    ),
     Step(
-        state: _currentStep > 0 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 0,
+        state: _currentStep > 4 ? StepState.complete : StepState.indexed,
+        isActive: _currentStep >= 4,
         title: Text(
           "Date & Time",
           style: TextStyle(
@@ -617,54 +698,93 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 ),
               ),
               const SizedBox(height: 25,),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80)
-                ),
-                onPressed: (){
+              DateTimePicker(
+                initialEntryMode:
+                DatePickerEntryMode.calendar,
+                //style: TextStyle(color: Color(Constants.textWhite())),
+                decoration:
+                InputDecoration(
+                    contentPadding:
+                    const EdgeInsets.symmetric(
+                        vertical: 15.0,
+                        horizontal: 10.0),
+                    fillColor: Colors.white,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            color: Colors
+                                .grey),
+                        borderRadius:
+                        BorderRadius.circular(
+                            10)),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius
+                          .circular(
+                          4),
+                      borderSide:
+                      BorderSide(
+                        color: Colors
+                            .red
+                            .shade400,
+                        // width: 1,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                      BorderRadius
+                          .circular(
+                          4),
+                      borderSide:
+                      BorderSide(
+                        color: Colors
+                            .blue
+                            .shade300,
+                        width: 1,
+                      ),
+                    ),
+                    hintText: 'set-date'.tr,
+                    hintStyle: TextStyle(
+                        color: Colors.grey),
+                    suffixIcon:  Icon(Icons.calendar_month,color:Color(Constants.primaryBlue()),),
+                    filled: true,
+                    isDense: true),
+                type: DateTimePickerType.dateTime,
+                initialValue: '',
+                firstDate: DateTime.now(),
+                // One year ago
+                lastDate: DateTime(2100),
+                dateLabelText: 'Date',
+                onChanged: (val) {
                   setState(() {
-                    isSelected == !isSelected;
-                    _adalenaController.bookTour.value = "In-Person Tour";
+                    _tourDate =
+                        DateTime.parse(
+                            val);
+                    _adalenaController
+                        .bookDateTime
+                        .value = DateFormat(
+                        'yyyy-MM-dd')
+                        .format(_tourDate!);
                   });
                 },
-                child: Text(
-                  "In-Person Tour",
-                  style: TextStyle(
-                      color: Color(Constants.primaryWhite()),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10,),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80)
-                ),
-                onPressed: (){
-                  setState(() {
-                    isSelected == !isSelected;
-                    _adalenaController.bookTour.value = "In-Person Tour";
-                  });
+                validator: (date) {
+                  if (date == null ||
+                      date.isEmpty) {
+                    return "choose-from-date"
+                        .tr;
+                  } else {
+                    return null;
+                  }
                 },
-                child: Text(
-                  "In-Person Tour",
-                  style: TextStyle(
-                      color: Color(Constants.primaryWhite()),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500
-                  ),
-                ),
               ),
+              Obx(()=>
+                  SizedBox(height: 40,child: Text(_adalenaController.validateError.value,style: const  TextStyle(color: Colors.red),),))
             ],
           ),
         )
     ),//date&time*
     Step(
-        state: _currentStep > 1 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 1,
+        state: _currentStep > 5 ? StepState.complete : StepState.indexed,
+        isActive: _currentStep >= 5,
         title: Text(
           "Media",
           style: TextStyle(
@@ -806,13 +926,15 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                   ),
                 ),
               ),
+              Obx(()=>
+                  SizedBox(height: 40,child: Text("${_adalenaController.validateError.value}",style: TextStyle(color: Colors.red),),))
             ],
           ),
         )
     ),//media
     Step(
-        state: _currentStep > 2 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 2,
+        state: _currentStep > 6 ? StepState.complete : StepState.indexed,
+        isActive: _currentStep >= 6,
         title: Text(
           "Personal Details",
           style: TextStyle(
@@ -821,127 +943,130 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               color: Color(Constants.primaryGreen())
           ),),
         content: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  "What is your first and last name?",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color(Constants.primaryBlue())
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    "What is your full name?",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Color(Constants.primaryBlue())
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15,),
-              TextFormField(
-                onChanged: (v){
-                  _adalenaController.bookName.value = v;
-                },
-                validator: (v){
-                  if (v == null || v.isEmpty) {
-                    return 'Enter your name';
-                  } else {
-                    return null;
-                  }
-                },
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: true,
-                  hintText: 'Enter Full Name',
-                  hintStyle: TextStyle(
-                      color:
-                      Color(Constants.primaryBlue())),
-                  fillColor:
-                  Color(Constants.primaryWhite()),
-                  border: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.circular(8.0)),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius:
-                    BorderRadius.circular(8.0),
-                    borderSide: BorderSide(
+                const SizedBox(height: 15,),
+                TextFormField(
+                  onChanged: (v){
+                    _adalenaController.bookName.value = v;
+                  },
+                  validator: (v){
+                     if (v == null || v.isEmpty) {
+                       return 'Enter your name';
+                     } else {
+                       return null;
+                     }
+                  },
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    hintText: 'Enter Full Name',
+                    hintStyle: TextStyle(
                         color:
                         Color(Constants.primaryBlue())),
-                  ),
-                  focusedBorder: OutlineInputBorder(
+                    fillColor:
+                    Color(Constants.primaryWhite()),
+                    border: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(8.0)),
+                    enabledBorder: OutlineInputBorder(
                       borderRadius:
                       BorderRadius.circular(8.0),
                       borderSide: BorderSide(
-                          color: Color(
-                              Constants.primaryBlue()))),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.circular(8.0),
-                      borderSide:
-                      BorderSide(color: Colors.red)),
+                          color:
+                          Color(Constants.primaryBlue())),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(8.0),
+                        borderSide: BorderSide(
+                            color: Color(
+                                Constants.primaryBlue()))),
+                    errorBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(8.0),
+                        borderSide:
+                        BorderSide(color: Colors.red)),
+                  ),
+                  keyboardType: TextInputType.name,
                 ),
-                keyboardType: TextInputType.name,
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  "What is your email?",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color(Constants.primaryBlue())
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    "What is your email?",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Color(Constants.primaryBlue())
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15,),
-              TextFormField(
-                onChanged: (v){
-                  _adalenaController.bookName.value = v;
-                },
-                validator: (v){
-                  if (v == null || v.isEmpty) {
-                    return 'Enter your email';
-                  } else {
-                    return null;
-                  }
-                },
-                decoration: InputDecoration(
-                  isDense: true,
-                  filled: true,
-                  hintText: 'Enter Email Address',
-                  hintStyle: TextStyle(
-                      color:
-                      Color(Constants.primaryBlue())),
-                  fillColor:
-                  Color(Constants.primaryWhite()),
-                  border: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.circular(8.0)),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius:
-                    BorderRadius.circular(8.0),
-                    borderSide: BorderSide(
+                const SizedBox(height: 15,),
+                TextFormField(
+                  onChanged: (v){
+                    _adalenaController.bookName.value = v;
+                  },
+                  validator: (v){
+                    if (v == null || v.isEmpty) {
+                      return 'Enter your email';
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                    isDense: true,
+                    filled: true,
+                    hintText: 'Enter Email Address',
+                    hintStyle: TextStyle(
                         color:
                         Color(Constants.primaryBlue())),
-                  ),
-                  focusedBorder: OutlineInputBorder(
+                    fillColor:
+                    Color(Constants.primaryWhite()),
+                    border: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(8.0)),
+                    enabledBorder: OutlineInputBorder(
                       borderRadius:
                       BorderRadius.circular(8.0),
                       borderSide: BorderSide(
-                          color: Color(
-                              Constants.primaryBlue()))),
-                  errorBorder: OutlineInputBorder(
-                      borderRadius:
-                      BorderRadius.circular(8.0),
-                      borderSide:
-                      BorderSide(color: Colors.red)),
+                          color:
+                          Color(Constants.primaryBlue())),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(8.0),
+                        borderSide: BorderSide(
+                            color: Color(
+                                Constants.primaryBlue()))),
+                    errorBorder: OutlineInputBorder(
+                        borderRadius:
+                        BorderRadius.circular(8.0),
+                        borderSide:
+                        BorderSide(color: Colors.red)),
+                  ),
+                  keyboardType: TextInputType.name,
                 ),
-                keyboardType: TextInputType.name,
-              ),
-              const SizedBox(height: 22,),
-            ],
+                const SizedBox(height: 20)
+              ],
+            ),
           ),
         )
     ),//personal details
     Step(
-        state: _currentStep > 3 ? StepState.complete : StepState.indexed,
-        isActive: _currentStep >= 3,
+        state: _currentStep > 7 ? StepState.complete : StepState.indexed,
+        isActive: _currentStep >= 7,
         title: Text(
           "Completed",
           style: TextStyle(
@@ -972,10 +1097,8 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                         borderRadius: BorderRadius.zero
                     )
                 ),
-                onPressed: (){
-                  setState(() {
-                    Get.back();
-                  });
+                onPressed: () {
+                  Get.back();
                 },
                 child: Text(
                   "Completed",
@@ -989,6 +1112,8 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ],
           ),
         )
-    ),
+    ),//feature*
+   //personal details
   ];
+
 }

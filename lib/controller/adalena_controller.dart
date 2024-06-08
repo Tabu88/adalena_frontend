@@ -1,4 +1,5 @@
 import 'dart:convert';
+// import 'dart:ffi';
 
 import 'package:adult_family_home/helpers/http_helper.dart';
 import 'package:adult_family_home/models/news_model.dart';
@@ -24,6 +25,7 @@ class AdalenaController extends GetxController {
   Rx<String> bookName = "".obs;
   Rx<String> bookEmail = "".obs;
   Rx<String> errorMessage = "".obs;
+  Rx<String> validateError = "".obs;
   RxList<NewsModel> newsValidationResponse = <NewsModel>[].obs;
 
   resetController(){
@@ -48,9 +50,14 @@ class AdalenaController extends GetxController {
   Future<dynamic>bookingTour() async {
     try {
       var jsonData = {
-        "to": bookEmail.value,
-        "subject": bookName.value,
-        "body": "Name:${bookName.value}, Media: ${bookMedia.value}, Feature: ${bookFeature.value}"
+        "name": bookName.value,
+        "email": bookEmail.value,
+        "typeoftour": bookTour.value,
+        "personOfInterest": bookPersonOfInterest.value,
+        "timeline": bookTimeline.value,
+        "feature": bookFeature.value,
+        "datetime": bookDateTime.value,
+        "media": bookMedia.value,
       };
 
       final response = await HttpHelper().completePost("", jsonData);
@@ -69,9 +76,12 @@ class AdalenaController extends GetxController {
   Future<dynamic> contactAdalena() async {
     try {
       var jsonData = {
-        "to": contactEmail.value,
-        "subject": contactReason.value,
-        "body": "Query:${contactQuery.value}, Media: ${contactMedia.value}"
+        "name": contactName.value,
+        "email": contactEmail.value,
+        "phoneNumber": contactPhone.value,
+        "reason": contactReason.value,
+        "media": contactMedia.value,
+        "query": contactQuery.value,
       };
       print(jsonData);
 

@@ -1,10 +1,34 @@
+import 'package:adult_family_home/controller/web_navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:flutter/services.dart';
 import '../helpers/constants.dart';
+import '../helpers/enums.dart';
 
-class FooterWidget extends StatelessWidget {
+class FooterWidget extends StatefulWidget {
   const FooterWidget({super.key});
+
+  @override
+  State<FooterWidget> createState() => _FooterWidgetState();
+}
+
+class _FooterWidgetState extends State<FooterWidget> {
+  final WebNavigationController webNavigationController = Get.find<WebNavigationController>();
+
+  void _copyText(BuildContext context, String textToCopy) {
+    Clipboard.setData(ClipboardData(text: textToCopy));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text('Copied to clipboard!'),
+        width: 250,
+        padding: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+        duration: Duration(seconds: 3),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +100,11 @@ class FooterWidget extends StatelessWidget {
                       Image.asset("assets/images/phone.png",height: 30,width: 30,),
                       const SizedBox(width: 15,),
                       TextButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          _copyText(context, "206-806-3698");
+                        },
                         child: const Text(
-                          "425-775-4440",
+                          "206-806-3698",
                           style: TextStyle(
                             fontSize: 22,
                             color: Colors.white,
@@ -94,9 +120,11 @@ class FooterWidget extends StatelessWidget {
                       Image.asset("assets/images/mail.png",height: 30,width: 30,),
                       const SizedBox(width: 15,),
                       TextButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          _copyText(context, "adalenaafh@gmail.com");
+                        },
                         child: const Text(
-                          "adalenafamilyhome@gmail.com",
+                          "adalenaafh@gmail.com",
                           style: TextStyle(
                             fontSize: 22,
                             color: Colors.white,
@@ -112,7 +140,9 @@ class FooterWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
+                    },
                     child: const Text(
                       "About Adalena",
                       style: TextStyle(
@@ -126,7 +156,9 @@ class FooterWidget extends StatelessWidget {
                     height: 10,
                   ),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                    },
                     child: const Text(
                       "Contact Us",
                       style: TextStyle(
@@ -272,9 +304,11 @@ class FooterWidget extends StatelessWidget {
                       Image.asset("assets/images/phone.png",height: 20,width: 20,),
                       const SizedBox(width: 10,),
                       TextButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          _copyText(context, "206-806-3698");
+                        },
                         child: const Text(
-                          "425-775-4440",
+                          "206-806-3698",
                           style: TextStyle(
                               fontSize: 15,
                               color: Colors.white,
@@ -290,9 +324,11 @@ class FooterWidget extends StatelessWidget {
                       Image.asset("assets/images/mail.png",height: 20,width: 20,),
                       const SizedBox(width: 10,),
                       TextButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          _copyText(context, "adalenaafh@gmail.com");
+                        },
                         child: const Text(
-                          "adalenafamilyhome@gmail.com",
+                          "adalenaafh@gmail.com",
                           style: TextStyle(
                               fontSize: 15,
                               color: Colors.white,
@@ -308,7 +344,9 @@ class FooterWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
+                    },
                     child: const Text(
                       "About Adalena",
                       style: TextStyle(
@@ -322,7 +360,9 @@ class FooterWidget extends StatelessWidget {
                     height: 10,
                   ),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                    },
                     child: const Text(
                       "Contact Us",
                       style: TextStyle(

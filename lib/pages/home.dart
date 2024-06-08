@@ -186,7 +186,9 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Morbi urna ultricies aliquam semper aliquet. Elementum ultricies odio at urna enim. Ante purus tincidunt quam arcu morbi. Vestibulum eget dignissim dis interdum id ac.",
+                                "Being situated in regular residential neighborhoods, these homes blend seamlessly into the community. "
+                                    "This traditional setting offers residents the familiarity of living in a standard home environment preserving the comfort of traditional living. "
+                                    "The traditional approach of adult family homes promotes close-knit interactions among residents and caregivers. ",
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Color(Constants.primaryBlue())
@@ -202,7 +204,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
             )
                 : Container(
               alignment: Alignment.center,
-              height: 400,
+              height: 500,
               width: double.infinity,
               color: Color(Constants.primaryBlue()),
               child: Container(
@@ -222,9 +224,9 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                     ),
                     Positioned(
                       top: 100,
-                      left: 300,
+                      right:0 ,
                       child: Container(
-                          height: 200,
+                          height: 280,
                           width: 270,
                           color: Color(Constants.primaryWhite()),
                           padding: const EdgeInsets.only(left: 12,top: 10),
@@ -255,13 +257,15 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Morbi urna ultricies aliquam semper aliquet. Elementum ultricies odio at urna enim. Ante purus tincidunt quam arcu morbi. Vestibulum eget dignissim dis interdum id ac.",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color(Constants.primaryBlue())
-                                ),
-                              )
-                            ],
+                                      "Being situated in regular residential neighborhoods, these homes blend seamlessly into the community. "
+                                      "This traditional setting offers residents the familiarity of living in a standard home environment preserving the comfort of traditional living. "
+                                      "The traditional approach of adult family homes promotes close-knit interactions among residents and caregivers. ",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              Color(Constants.primaryBlue())),
+                                    )
+                                  ],
                           )
                       ),
                     )
@@ -295,7 +299,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                       left: 0,
                       bottom:30,
                       child: Container(
-                          height: 300,
+                          height: 350,
                           width: 400,
                           color: Color(Constants.primaryBlue()),
                           padding: const EdgeInsets.only(left: 30,top: 15),
@@ -326,7 +330,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Morbi urna ultricies aliquam semper aliquet. Elementum ultricies odio at urna enim. Ante purus tincidunt quam arcu morbi. Vestibulum eget dignissim dis interdum id ac.",
+                                "ADALENA ADULT FAMILY HOME LLC is part of the SPANAWAY community, offering residents a chance to remain connected to a familiar locale. In ADALENA, the community atmosphere is akin to a family gathering, where residents and caregivers interact closely. The smaller number of residents at ADALENA means that the community is tight-knit, with each member receiving the attention they need",
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Color(Constants.primaryWhite())
@@ -342,11 +346,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
             )
                 : Container(
               alignment: Alignment.center,
-              height: 400,
+              height: 500,
               width: double.infinity,
               color: Color(Constants.primaryWhite()),
               child: Container(
-                height: 500,
+                height: 400,
                 width: 570,
                 child: Stack(
                   children: [
@@ -363,7 +367,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                       left: 0,
                       bottom:30,
                       child: Container(
-                          height: 200,
+                          height: 280,
                           width: 270,
                           color: Color(Constants.primaryBlue()),
                           padding: const EdgeInsets.only(left: 30,top: 15),
@@ -394,7 +398,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Morbi urna ultricies aliquam semper aliquet. Elementum ultricies odio at urna enim. Ante purus tincidunt quam arcu morbi. Vestibulum eget dignissim dis interdum id ac.",
+                                "ADALENA ADULT FAMILY HOME LLC is part of the SPANAWAY community, offering residents a chance to remain connected to a familiar locale. In ADALENA, the community atmosphere is akin to a family gathering, where residents and caregivers interact closely. The smaller number of residents at ADALENA means that the community is tight-knit, with each member receiving the attention they need",
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Color(Constants.primaryWhite())
@@ -431,11 +435,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                       ),
                     ),
                     Positioned(
-                      top: 180,
+                      top: 120,
                       right: 0,
                       child: Container(
-                          height: 300,
-                          width: 350,
+                          height: 350,
+                          width: 400,
                           color: Color(Constants.primaryWhite()),
                           padding: const EdgeInsets.only(left: 30,top: 15),
                           child: Column(
@@ -458,14 +462,14 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               Text(
                                 "The Adalena Experience",
                                 style: TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 24 ,
                                     fontWeight: FontWeight.w600,
                                     color: Color(Constants.primaryGreen()),
                                     fontStyle: FontStyle.italic
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Morbi urna ultricies aliquam semper aliquet. Elementum ultricies odio at urna enim. Ante purus tincidunt quam arcu morbi. Vestibulum eget dignissim dis interdum id ac.",
+                                "Residents at ADALENA ADULT FAMILY HOME LLC experience the comfort and warmth of a home-like environment, which promotes a sense of security and well-being. With a higher caregiver-to-resident ratio, ADALENA ensures that each resident receives individualized attention and care. The increased attention from caregivers helps in promptly addressing any health issues or concerns that may arise.",
                                 style: TextStyle(
                                     fontSize: 18,
                                     color: Color(Constants.primaryBlue())
@@ -481,7 +485,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
             )
                 : Container(
               alignment: Alignment.center,
-              height: 400,
+              height: 500,
               width: double.infinity,
               color: Color(Constants.primaryBlue()),
               child: Container(
@@ -502,7 +506,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                       top: 100,
                       right: 0,
                       child: Container(
-                          height: 200,
+                          height: 280,
                           width: 270,
                           color: Color(Constants.primaryWhite()),
                           padding: const EdgeInsets.only(left: 30,top: 15),
@@ -533,7 +537,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Morbi urna ultricies aliquam semper aliquet. Elementum ultricies odio at urna enim. Ante purus tincidunt quam arcu morbi. Vestibulum eget dignissim dis interdum id ac.",
+                                "Residents at ADALENA ADULT FAMILY HOME LLC experience the comfort and warmth of a home-like environment, which promotes a sense of security and well-being. With a higher caregiver-to-resident ratio, ADALENA ensures that each resident receives individualized attention and care. The increased attention from caregivers helps in promptly addressing any health issues or concerns that may arise.",
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Color(Constants.primaryBlue())
@@ -547,6 +551,262 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 ),
               ),
             )
+        ),
+        SliverToBoxAdapter(
+          child: width > 920
+              ? Container(
+            height: 650,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Text(
+                              "Life at Adalena Family Home",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 50,
+                                  fontStyle: FontStyle.italic,
+                                  color: Color(Constants.primaryGreen())
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 15,),
+                          Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Text(
+                              "Lorem ipsum dolor sit amet consectetur. Suspendisse nunc lacus vulputate sed. Facilisis commodo mauris nisl rutrum gravida et blandit. Et lorem pulvinar at cras turpis tellus. Vulputate at ultricies orci nisi sit at.",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(Constants.primaryBlue())
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32,),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                        onTap: (){
+                          if(_currentIndex > 0){
+                            _scrollToIndex(_currentIndex-1);
+                          }
+                        },
+                        child: Container(
+                          color:  Colors.transparent,
+                          child: Icon(
+                            Icons.keyboard_arrow_left,
+                            size: 60,
+                            color: Color(Constants.primaryBlue()),
+                          ),
+                        )),
+                    Expanded(
+                      child: SizedBox(
+                        height: 400,
+                        child: ListView.builder(
+                          controller: _scrollController,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _houseImages.length,
+                          itemBuilder: (context, index){
+                            var images = _houseImages[index];
+                            return Container(
+                              child: InkWell(
+                                onTap:(){
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context){
+                                        return Dialog(
+                                          child: InteractiveViewer(
+                                            child: Image.asset(images, fit: BoxFit.cover,),
+                                          ),
+                                        );
+                                      });
+                                },
+                                onHover: (v) {
+                                  if(v == true){
+                                    color = Color(Constants.primaryBlue()).withOpacity(0.5);
+                                  } else {
+                                    color = Colors.transparent;
+                                  }
+                                },
+                                child: Image.asset(
+                                  images,
+                                  height: 250,
+                                  width: 350,
+                                  // color: color,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                        onTap: (){
+                          if(_currentIndex < 7){
+                            _scrollToIndex(_currentIndex+1);
+                          }
+                        },
+                        child: Container(
+                          color: Colors.transparent,
+                          child: Icon(
+                            Icons.keyboard_arrow_right,
+                            size: 60,
+                            color: Color(Constants.primaryBlue()),
+                          ),
+                        )),
+                  ],
+                ),
+              ],
+            )
+          )
+              : Container(
+              height: 900,
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      const Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                "Life at Adalena Family Home",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 50,
+                                    fontStyle: FontStyle.italic,
+                                    color: Color(Constants.primaryGreen())
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 15,),
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Text(
+                                "Lorem ipsum dolor sit amet consectetur. Suspendisse nunc lacus vulputate sed. Facilisis commodo mauris nisl rutrum gravida et blandit. Et lorem pulvinar at cras turpis tellus. Vulputate at ultricies orci nisi sit at.",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(Constants.primaryBlue())
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Expanded(
+                        flex: 1,
+                        child: SizedBox(),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 32,),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                          onTap: (){
+                            if(_currentIndex > 0){
+                              _scrollToIndex(_currentIndex-1);
+                            }
+                          },
+                          child: Container(
+                            color:  Colors.transparent,
+                            child: Icon(
+                              Icons.keyboard_arrow_left,
+                              size: 60,
+                              color: Color(Constants.primaryBlue()),
+                            ),
+                          )),
+                      Expanded(
+                        child: SizedBox(
+                          height: 400,
+                          child: ListView.builder(
+                            controller: _scrollController,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: _houseImages.length,
+                            itemBuilder: (context, index){
+                              var images = _houseImages[index];
+                              return Container(
+                                child: InkWell(
+                                  onTap:(){},
+                                  onHover: (v) {
+                                    if(v == true){
+                                      color = Color(Constants.primaryBlue()).withOpacity(0.5);
+                                    } else {
+                                      color = Colors.transparent;
+                                    }
+                                  },
+                                  child: Image.asset(
+                                    images,
+                                    height: 250,
+                                    width: 350,
+                                    // color: color,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                          onTap: (){
+                            if(_currentIndex < 7){
+                              _scrollToIndex(_currentIndex+1);
+                            }
+                          },
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 60,
+                              color: Color(Constants.primaryBlue()),
+                            ),
+                          )),
+                    ],
+                  ),
+                ],
+              )
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Divider(
+            color: Color(Constants.primaryBlue()),
+          ),
         ),
         SliverToBoxAdapter(
           child:
@@ -613,6 +873,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                             itemBuilder: (context, index) {
                                               var icons = _serviceImages[index];
                                               var title = _services[index];
+                                              var details = _servicesDetails[index];
                                               return Container(
                                                 height: 340,
                                                 width: 500,
@@ -648,9 +909,9 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                                               ),
                                                               const SizedBox(height: 5,),
                                                               Text(
-                                                                "Lorem ipsum dolor sit amet consectetur. Malesuada in neque phasellus aliquet at aenean diam tristique est. Suspendisse id orci donec tristique. Mauris ullamcorper odio lectus turpis elit mauris scelerisque nunc quam. Nisl nibh et sit vitae.",
+                                                                details,
                                                                 overflow: TextOverflow.ellipsis,
-                                                                maxLines: 5,
+                                                                maxLines: 6,
                                                                 style: TextStyle(
                                                                     fontSize: 14,
                                                                     color: Color(Constants.primaryBlue())
@@ -684,6 +945,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                         itemBuilder: (context, index) {
                                           var icons = _serviceImages[index];
                                           var title = _services[index];
+                                          var details = _servicesDetails[index];
                                           return Center(
                                             child: Container(
                                                 height: 250,
@@ -742,7 +1004,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                                                   height: 5,
                                                                 ),
                                                                 Text(
-                                                                  "Lorem ipsum dolor sit amet consectetur. Malesuada in neque phasellus aliquet at aenean diam tristique est. Suspendisse id orci donec tristique. Mauris ullamcorper odio lectus turpis elit mauris scelerisque nunc quam. Nisl nibh et sit vitae.",
+                                                                  details,
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -797,81 +1059,6 @@ class _HomeWidgetsState extends State<HomeWidgets> {
             ),
           ),
         ),
-        SliverToBoxAdapter(
-          child: Divider(
-            color: Color(Constants.primaryBlue()),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            height: 400,
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                 GestureDetector(
-                    onTap: (){
-                      if(_currentIndex > 0){
-                        _scrollToIndex(_currentIndex-1);
-                      }
-                    },
-                      child: Container(
-                        color:  Colors.transparent,
-                        child: Icon(
-                                            Icons.keyboard_arrow_left,
-                                            size: 60,
-                                            color: Color(Constants.primaryBlue()),
-                                          ),
-                      )),
-                 Expanded(
-                    child: ListView.builder(
-                      controller: _scrollController,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: _houseImages.length,
-                      itemBuilder: (context, index){
-                        var images = _houseImages[index];
-                        return Container(
-                          child: InkWell(
-                                onTap:(){},
-                                onHover: (v) {
-                                  if(v == true){
-                                    color = Color(Constants.primaryBlue()).withOpacity(0.5);
-                                  } else {
-                                    color = Colors.transparent;
-                                  }
-                                },
-                                child: Image.asset(
-                                  images,
-                                  height: 250,
-                                  width: 350,
-                                  // color: color,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                        );
-                      },
-                    ),
-                  ),
-
-                 GestureDetector(
-                      onTap: (){
-                        if(_currentIndex < 7){
-                          _scrollToIndex(_currentIndex+1);
-                        }
-                      },
-                      child: Container(
-                        color: Colors.transparent,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 60,
-                          color: Color(Constants.primaryBlue()),
-                        ),
-                      )),
-
-              ],
-            ),
-          ),
-        ),
         const SliverToBoxAdapter(
           child: ClipRRect(
               child: TourWidget()
@@ -891,6 +1078,14 @@ class _HomeWidgetsState extends State<HomeWidgets> {
     "Health Consultation",
     "House Care",
     "Health Medicine"
+  ];
+  List<String> _servicesDetails = [
+    "Regular blood pressure and weight checks are conducted at scheduled intervals to monitor residents' health. These checkups help track any irregularities or health issues that may arise. The recorded data ensures timely intervention and appropriate medical care.",
+    "Residents receive three nutritious meals daily—breakfast, lunch, and dinner. The facility accommodates dietary restrictions and special doctor-prescribed diets to ensure each resident's nutritional needs are met. Additional food items like coffee, tea, and snacks between meals are also provided for added comfort and satisfaction.",
+    "ADALENA ADULT FAMILY HOME LLC specializes in caring for adults with developmental disabilities, providing expert and certified care.An on-site Hoyer lift is available for residents who require assistance with mobility ",
+    "ADALENA ADULT FAMILY HOME LLC provides short-term or respite care with flexible daily rates for stays under a month. The home employs bilingual staff who speak English and Swahili, facilitating better communication with residents",
+    "Daily housekeeping services keep the facility clean and organized, including residents' rooms. All standard home utilities, such as electricity, water, and heating, are included in the base price. A diverse range of social and recreational activities is offered weekly to engage residents.  ",
+    "The facility provides comprehensive medications management, ensuring residents take their medications on schedule. Caregivers track administration times and manage prescription refills to prevent any lapses. This service is crucial for maintaining the health and stability of residents."
   ];
 
   List<String> _houseImages = [

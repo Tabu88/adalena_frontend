@@ -28,7 +28,8 @@ class _BlogWidgetsState extends State<BlogWidgets> {
   }
 
   _init () async {
-
+    _adalenaController.newsValidationResponse.value.clear();
+    fetchNews();
   }
 
   fetchNews() async {
@@ -80,7 +81,7 @@ class _BlogWidgetsState extends State<BlogWidgets> {
                                 flex: 2,
                                 child: Image.asset(
                                   "assets/images/Blue House bottom text.png",
-                                  height: 100,
+                                  height: 150,
                                   width: 220,
                                 ),),
                               const Expanded(flex: 2,child: SizedBox(),),
@@ -123,9 +124,7 @@ class _BlogWidgetsState extends State<BlogWidgets> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
-                          child: SizedBox(
-
-                          ),
+                          child: SizedBox(),
                         ),
                         Expanded(
                           child: InkWell(
@@ -151,7 +150,6 @@ class _BlogWidgetsState extends State<BlogWidgets> {
                         :  SizedBox(
                         height: 1400,
                         child: ListView.builder(
-                          reverse: true,
                           itemCount: _adalenaController.newsValidationResponse.value.length,
                             itemBuilder: (context, index) {
                              var news = _adalenaController.newsValidationResponse.value;
@@ -161,7 +159,7 @@ class _BlogWidgetsState extends State<BlogWidgets> {
                              var url = news[index].url;
                              var publishedDate = news[index].publishedAt!.split(":").first;
                              var content = news[index].content;
-                             var author = news[index].author!.contains(",") ? news[index].author!.split(",").first : news[index].author!;
+                             //var author = news[index].author.contains(",") ? news[index].author!.split(",").first : news[index].author!;
 
 
                             return Card(
@@ -195,7 +193,8 @@ class _BlogWidgetsState extends State<BlogWidgets> {
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Text(
-                                                  author ?? "",
+                                                  "",
+                                                  // author ?? "",
                                                   style: const TextStyle(
                                                     fontSize: 24,
                                                     fontWeight: FontWeight.w500,
@@ -217,6 +216,8 @@ class _BlogWidgetsState extends State<BlogWidgets> {
                                               padding: const EdgeInsets.all(15),
                                               child: Text(
                                                 title ?? "",
+                                               overflow: TextOverflow.ellipsis,
+                                               maxLines: 1,
                                                style: TextStyle(
                                                   fontSize: 35,
                                                   fontWeight: FontWeight.bold,

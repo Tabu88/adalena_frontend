@@ -146,5 +146,45 @@ class WidgetHelper{
         margin: EdgeInsets.only(top: marginTop ?? 5, left: 14, right: 14),
       );
 
+  static Future<dynamic> snackbar2 (BuildContext context){
+    return showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Stack(
+          children: <Widget>[
+            Positioned(
+              bottom: 150.0, // Adjust this value to move the Snackbar up or down
+              left: MediaQuery.of(context).size.width / 2, // Adjust the position as needed
+              child: Material(
+                color: Colors.transparent,
+                child: Container(
+                  width: 250 , // Width of the Snackbar
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  decoration: BoxDecoration(
+                    color: Colors.black87,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow:const  [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 4.0,
+                        spreadRadius: 2.0,
+                      ),
+                    ],
+                  ),
+                  child: const Text(
+                    'Copied to clickbar!',
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
 }
