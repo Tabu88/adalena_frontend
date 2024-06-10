@@ -137,7 +137,8 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                   ),
                 ),
                 const SizedBox(height: 10,),
-                Row(
+                width > 580
+                    ? Row(
                   children: [
                     Expanded(
                       flex: 1,
@@ -166,6 +167,20 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                     ),
                   ],
                 )
+                    : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+                  child: Text(
+                    "Lorem ipsum dolor sit amet consectetur. Elementum ac pulvinar viverra vivamus. Neque quam tempor aenean sed bibendum consectetur sed mollis hendrerit. Dui nulla adipiscing adipiscing rhoncus neque nisl. Integer sit eu sapien luctus.",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600,
+                        color: Color(Constants.primaryWhite())
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
           ),

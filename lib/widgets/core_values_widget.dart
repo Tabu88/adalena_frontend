@@ -148,11 +148,11 @@ class CoreValueWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 50,
+                radius: 40,
                 backgroundColor: Color(Constants.primaryBlue()),
                 child: Image.asset(iconImage,height: 50,width: 50,),
               ),
-              const SizedBox(width: 15,),
+              const SizedBox(width: 10,),
               Text(
                 title,
                 style: TextStyle(

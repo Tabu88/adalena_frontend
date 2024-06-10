@@ -349,14 +349,17 @@ class _TourWidgetState extends State<TourWidget> {
                         height: 250,
                         width: double.infinity,
                         color: Color(Constants.primaryBlue()),
-                        child:  Text(
-                          "Fairwinds – Woodward Park was designed and built with resort-style senior living in mind. Located in the prestigious northeast Fresno neighborhood, we enjoy a view of the Sierra Nevada mountain range. Upscale and casual restaurants and shopping is conveniently located within walking distance. We are just a short drive from Kaiser Permanente, Saint Agnes, and Clovis Community Hospitals, giving residents and their families peace of mind, knowing hospital care is close by if needed.",
-                          style: TextStyle(
-                            color: Color(Constants.primaryWhite()),
-                            fontSize: 18,
+                        child:  Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
+                          child: Text(
+                            "Fairwinds – Woodward Park was designed and built with resort-style senior living in mind. Located in the prestigious northeast Fresno neighborhood, we enjoy a view of the Sierra Nevada mountain range. Upscale and casual restaurants and shopping is conveniently located within walking distance. We are just a short drive from Kaiser Permanente, Saint Agnes, and Clovis Community Hospitals, giving residents and their families peace of mind, knowing hospital care is close by if needed.",
+                            style: TextStyle(
+                              color: Color(Constants.primaryWhite()),
+                              fontSize: width <580 ? 15 :18,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 9,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 9,
                         ),
                       )
                     ],
@@ -366,13 +369,13 @@ class _TourWidgetState extends State<TourWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
-                  height: 500,
+                  height: 550,
                   width: double.infinity,
                   child:Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 200,
+                        height: 240,
                         width: double.infinity,
                         child: Column(
                           children: [

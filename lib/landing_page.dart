@@ -76,7 +76,7 @@ class _LandingPageState extends State<LandingPage>  {
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
-            icon: const Icon(Icons.menu),
+            icon:  Icon(Icons.menu, size: 35,color: Color(Constants.primaryBlue()),),
           ),
         ),
         backgroundColor: Color(Constants.primaryWhite()),
@@ -87,13 +87,13 @@ class _LandingPageState extends State<LandingPage>  {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("Width: $width"),
                   Builder(
                     builder: (context) {
                       return OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                            fixedSize: Size(width * 0.22, 150),
+                            fixedSize: width < 580 ? Size(width * 0.26, 50) :Size(width * 0.22, 100),
                             shape: RoundedRectangleBorder(
                               side:
                                   BorderSide(color: Color(Constants.primaryBlue())),
@@ -104,11 +104,12 @@ class _LandingPageState extends State<LandingPage>  {
                           Scaffold.of(context).openEndDrawer();
                         },
                         child: Text(
-                          "Book A Tour",
+                          "Book Tour",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Color(Constants.primaryBlue()),
-                              fontSize: 18),
+                              fontSize: width < 580 ? 15 :18
+                          ),
                         ),
                       );
                     }
@@ -118,7 +119,7 @@ class _LandingPageState extends State<LandingPage>  {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        fixedSize: Size(width * 0.22, 150),
+                        fixedSize: width < 580 ? Size(width * 0.26, 50) :Size(width * 0.22, 100),
                         shape: RoundedRectangleBorder(
                           side:
                               BorderSide(color: Color(Constants.primaryBlue())),
@@ -133,7 +134,8 @@ class _LandingPageState extends State<LandingPage>  {
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Color(Constants.primaryWhite()),
-                          fontSize: 18),
+                          fontSize: width < 580 ? 15 :18
+                      ),
                     ),
                   ),
                 ],

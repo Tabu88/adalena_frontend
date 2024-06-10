@@ -251,7 +251,7 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
           )
               : Container(
             color: Color(Constants.primaryBlue()),
-            height: 1780,
+            height:  width < 580 ? 2040 : 1780,
             width: double.infinity,
             child: Column(
               children: [

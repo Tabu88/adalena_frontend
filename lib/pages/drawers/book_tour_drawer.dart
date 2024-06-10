@@ -112,10 +112,79 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
   @override
   Widget build(BuildContext context) {
      _adalenaController.validateError.value = "";
+     double width = MediaQuery.of(context).size.width;
     return  Drawer(
       backgroundColor: Color(Constants.primaryWhite()),
       width: double.infinity,
-      child: Row(
+      child:  width < 580
+          ? Expanded(
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.light(
+                          primary: Color(Constants.primaryGreen()))),
+                  child: Center(
+                    child: Stepper(
+                      type: StepperType.vertical,
+                      steps: getFirstSteps(),
+                      currentStep: _currentStep,
+                      onStepContinue: () {
+                        validateStep(_currentStep);
+                      },
+                      onStepTapped: (step) {
+                        // setState(() {
+                        //   _currentStep = step;
+                        // });
+                      },
+                      onStepCancel: () {
+                        setState(() {
+                          _currentStep -= 1;
+                        });
+                      },
+                      controlsBuilder: (context, details) {
+                        if (_currentStep >= getFirstSteps().length - 1) {
+                          return const SizedBox();
+                        } else {
+                          return Row(
+                            children: [
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          Color(Constants.primaryBlue()),
+                                      fixedSize: const Size(100, 45),
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.zero)),
+                                  onPressed: details.onStepContinue,
+                                  child: isLoading
+                                      ? const CircularProgressIndicator(
+                                          backgroundColor: Colors.white,
+                                        )
+                                      : const Text(
+                                          "Next",
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      fixedSize: const Size(100, 45),
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.zero)),
+                                  onPressed: details.onStepCancel,
+                                  child: Text(
+                                    "Back",
+                                    style: TextStyle(
+                                        color: Color(Constants.primaryBlue())),
+                                  ))
+                            ],
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              )
+          : Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
@@ -144,13 +213,11 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                   currentStep: _currentStep,
                   onStepContinue: ()  {
                     validateStep(_currentStep);
-                    print("passed here: currentStep is $_currentStep");
-                    print(_adalenaController.validateError.value);
                   },
                   onStepTapped: (step){
-                    setState(() {
-                      _currentStep = step;
-                    });
+                    // setState(() {
+                    //   _currentStep = step;
+                    // });
                   },
                   onStepCancel: () {
                     setState(() {

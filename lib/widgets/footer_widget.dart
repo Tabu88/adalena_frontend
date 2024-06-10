@@ -35,7 +35,7 @@ class _FooterWidgetState extends State<FooterWidget> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 15),
-      height: width > 700 ?500 : 380,
+      height: width > 700 ? 500 :width < 580 ? 770 : 380,
       width: double.infinity,
       color: Color(Constants.primaryBlue()),
       child: width > 700
@@ -242,6 +242,226 @@ class _FooterWidgetState extends State<FooterWidget> {
             ),
           )
         ],
+      )
+          : width < 580
+          ? Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+          children : [
+            Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+                  child: Image.asset(
+                    "assets/images/Blue House bottom text.png",
+                    height: 100,
+                    width: 200,
+                  ),
+                ),
+            const SizedBox(height: 8,),
+            const Divider(
+              color: Color(0xFF76c352),
+            ),
+            const SizedBox(height: 8,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset("assets/images/insta.png",height: 50,width: 50,),
+                const SizedBox(
+                  width: 15,
+                ),
+                Image.asset("assets/images/facebook.png",height: 40,width: 40,),
+                const SizedBox(
+                  width: 15,
+                ),
+                Image.asset("assets/images/linkedin.png",height: 50,width: 50,),
+              ],
+            ),
+            const SizedBox(height: 12,),
+            Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset("assets/images/phone.png",height: 30,width: 30,),
+                            const SizedBox(width: 10,),
+                            TextButton(
+                              onPressed: (){
+                                _copyText(context, "206-806-3698");
+                              },
+                              child: const Text(
+                                "206 - 806 - 3698",
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontStyle: FontStyle.italic
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 15,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset("assets/images/mail.png",height: 30,width: 30,),
+                            const SizedBox(width: 10,),
+                            TextButton(
+                              onPressed: (){
+                                _copyText(context, "adalenaafh@gmail.com");
+                              },
+                              child: const Text(
+                                "adalenaafh@gmail.com",
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.white,
+                                    fontStyle: FontStyle.italic
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: (){
+                      webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
+                    },
+                    child: const Text(
+                      "About Adalena",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  TextButton(
+                    onPressed: (){
+                      webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                    },
+                    child: const Text(
+                      "Contact Us",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: const Color(0xFF76C352),
+                            radius: 30,
+                            child: Image.asset("assets/images/house.png",height: 30,width: 30,),
+                          ),
+                          const Text(
+                            "EQUAL HOUSING \n OPPORTUNITY",
+                            style: TextStyle(
+                                color: Color(0xFF76C352),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Color(0xFF76C352),
+                        radius: 30,
+                        child: Image.asset(
+                          "assets/images/disabled.png",
+                          height: 30,
+                          width: 30,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ],
+              ),
+
+            const SizedBox(height: 30,),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                // mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    child:  Wrap(
+                      direction: Axis.horizontal,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        const Padding(
+                          padding:  EdgeInsets.only(top: 3.0),
+                          child: Icon(Icons.copyright,color: Colors.white,size: 14,),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        Text(
+                          "${DateTime.now().year} Adalena",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    )
+                  ),
+                  TextButton(
+                    onPressed: (){},
+                    child: Text(
+                      "PRIVACY POLICY",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: 15
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10,),
+                  TextButton(
+                    onPressed: (){},
+                    child: Text(
+                      "TERMS AND CONDITIONS",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: 15
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ]
       )
           : Column(
         children : [

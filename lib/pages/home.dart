@@ -101,7 +101,28 @@ class _HomeWidgetsState extends State<HomeWidgets> {
           actions: [const SizedBox()],
         ),
         SliverToBoxAdapter(
-          child: Container(
+          child: width < 400
+              ? Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  alignment: Alignment.center,
+                  child:  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
+                      child: Text(
+                              "“Our unique communities and in-home health services offer  senior freedom , independence , spiritual and physical well  being  , and a life full of new experience.”",
+                              style: TextStyle(
+                                fontSize: width > 750 ? 25 : 19,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                    ),
+                  ),
+
+                )
+              : Container(
             padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
             alignment: Alignment.center,
             child:  Row(
@@ -205,16 +226,16 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 : width < 580
                 ? Container(
               alignment: Alignment.center,
-              height: 400,
+              height: 500,
               width: double.infinity,
               color: Color(Constants.primaryBlue()),
               child: Container(
-                height: 350,
+                height: 500,
                 width: 500,
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 50,
+                      top: 20,
                       left: 30,
                       child: Image.asset(
                         "assets/images/old_exercising.png",
@@ -224,11 +245,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                       ),
                     ),
                     Positioned(
-                      top: 100,
-                      right:20,
+                      bottom: 40,
+                      right:0,
                       child: Container(
-                          height: 260,
-                          width: 250,
+                          height: 220,
+                          width: 320,
                           color: Color(Constants.primaryWhite()),
                           padding: const EdgeInsets.only(left: 12,top: 10),
                           child: Column(
@@ -419,16 +440,16 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 : width < 580
                 ? Container(
               alignment: Alignment.center,
-              height: 400,
+              height: 500,
               width: double.infinity,
               color: Color(Constants.primaryWhite()),
               child: Container(
-                // height: 350,
-                // width: 500,
+                height: 500,
+                width: 500,
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 30,
+                      top: 20,
                       right: 20,
                       child: Image.asset(
                         "assets/images/old_fellas.png",
@@ -438,11 +459,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                       ),
                     ),
                     Positioned(
-                      left: 10,
+                      left: 0,
                       bottom:30,
                       child: Container(
-                          height: 300,
-                          width: 250,
+                          height: 230,
+                          width: 330,
                           color: Color(Constants.primaryBlue()),
                           padding: const EdgeInsets.only(
                               left: 20,
@@ -474,7 +495,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                "ADALENA ADULT FAMILY HOME LLC is part of the SPANAWAY community, offering residents a chance to remain connected to a familiar locale. In ADALENA, the community atmosphere is akin to a family gathering, where residents and caregivers interact closely. The smaller number of residents at ADALENA means that the community is tight-knit, with each member receiving the attention they need",
+                                "ADALENA ADULT FAMILY HOME LLC is part of the SPANAWAY community, offering residents a chance to remain connected to a familiar locale. In ADALENA, the community atmosphere is akin to a family gathering, where residents and caregivers interact closely. The smaller number of residents at ADALENA means that the community is tight-knit, with each member receiving the attention they need.",
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Color(Constants.primaryWhite())
@@ -630,29 +651,29 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 : width < 580
                 ? Container(
               alignment: Alignment.center,
-              height: 400,
+              height: 500,
               width: double.infinity,
               color: Color(Constants.primaryBlue()),
               child: Container(
-                height: 350,
+                height: 500,
                 width: 500,
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 30,
-                      left: 20,
+                      top: 20,
+                      left: 30,
                       child: Image.asset(
                         "assets/images/background_4.png",
                         height: 250,
-                        width: 350,
+                        width: 320,
                       ),
                     ),
                     Positioned(
-                      bottom: 20,
-                      right: 10,
+                      bottom: 30,
+                      right: 0,
                       child: Container(
-                          height: 300,
-                          width: 250,
+                          height: 240,
+                          width: 320,
                           color: Color(Constants.primaryWhite()),
                           padding: const EdgeInsets.only(left: 20,top: 15),
                           child: Column(
@@ -896,7 +917,118 @@ class _HomeWidgetsState extends State<HomeWidgets> {
               ],
             )
           )
-              : Container(
+              : width < 580
+              ? Container(
+              height: 700,
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                    child: Text(
+                      "Life at Adalena Family Home",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                          fontStyle: FontStyle.italic,
+                          color: Color(Constants.primaryGreen())
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Text(
+                      "Lorem ipsum dolor sit amet consectetur. Suspendisse nunc lacus vulputate sed. Facilisis commodo mauris nisl rutrum gravida et blandit. Et lorem pulvinar at cras turpis tellus. Vulputate at ultricies orci nisi sit at.",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(Constants.primaryBlue())
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                          onTap: (){
+                            if(_currentIndex > 0){
+                              _scrollToIndex(_currentIndex-1);
+                            }
+                          },
+                          child: Container(
+                            color:  Colors.transparent,
+                            child: Icon(
+                              Icons.keyboard_arrow_left,
+                              size: 60,
+                              color: Color(Constants.primaryBlue()),
+                            ),
+                          )),
+                      Expanded(
+                        child: SizedBox(
+                          height: 400,
+                          child: ListView.builder(
+                            controller: _scrollController,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: _houseImages.length,
+                            itemBuilder: (context, index){
+                              var images = _houseImages[index];
+                              return Container(
+                                child: InkWell(
+                                  onTap:(){
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context){
+                                          return Dialog(
+                                            child: InteractiveViewer(
+                                              child: Image.asset(images, fit: BoxFit.cover,),
+                                            ),
+                                          );
+                                        });
+                                  },
+                                  onHover: (v) {
+                                    if(v == true){
+                                      color = Color(Constants.primaryBlue()).withOpacity(0.5);
+                                    } else {
+                                      color = Colors.transparent;
+                                    }
+                                  },
+                                  child: Image.asset(
+                                    images,
+                                    height: 250,
+                                    width: 350,
+                                    // color: color,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                          onTap: (){
+                            if(_currentIndex < 7){
+                              _scrollToIndex(_currentIndex+1);
+                            }
+                          },
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              size: 60,
+                              color: Color(Constants.primaryBlue()),
+                            ),
+                          )),
+                    ],
+                  ),
+                ],
+              )
+          )
+              :Container(
               height: 900,
               width: double.infinity,
               child: Column(
@@ -1036,7 +1168,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
             padding: EdgeInsets.all(8.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Container(
+              child:  Container(
                 height: width > 1400 ? 850 : 1200,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -1058,7 +1190,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               "You Are In Good Hands",
                               style: TextStyle(
                                   color: Color(Constants.primaryGreen()),
-                                  fontSize: 50,
+                                  fontSize: width > 580 ?50 : 40,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.italic
                               ),
@@ -1070,11 +1202,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               "Lorem ipsum dolor sit amet consectetur. Suspendisse nunc lacus vulputate sed. Facilisis commodo mauris nisl rutrum gravida et blandit. Et lorem pulvinar at cras turpis tellus. Vulputate at ultricies orci nisi sit at.",
                               style: TextStyle(
                                 color: Color(Constants.primaryBlue()),
-                                fontSize: 18,
+                                fontSize: width > 580 ? 18 : 15,
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            const SizedBox(height: 8,),
+                            const SizedBox(height: 15,),
                             Container(
                               width : 1100,
                               height: width > 1400 ? 650 : 900,
@@ -1171,7 +1303,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                           return Center(
                                             child: Container(
                                                 height: 250,
-                                                width: 350,
+                                                width: width < 580 ? 270 : 350,
                                                 color: Color(
                                                     Constants.primaryWhite()),
                                                 child: Stack(
@@ -1181,7 +1313,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                                         left: 0,
                                                         top: 40,
                                                         child: Container(
-                                                          width: 350,
+                                                          width: width < 580 ?270 :350,
                                                           height: 200,
                                                           decoration:
                                                               BoxDecoration(
@@ -1230,7 +1362,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
-                                                                  maxLines: 5,
+                                                                  maxLines: 6,
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           14,
@@ -1279,6 +1411,11 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 ),
               ),
             ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Divider(
+            color: Color(Constants.primaryBlue()),
           ),
         ),
         const SliverToBoxAdapter(
