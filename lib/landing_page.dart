@@ -88,8 +88,7 @@ class _LandingPageState extends State<LandingPage>  {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Text("Height: $height"),
-                  // Text("Width: $width"),
+                  Text("Width: $width"),
                   Builder(
                     builder: (context) {
                       return OutlinedButton(
