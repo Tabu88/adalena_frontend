@@ -245,21 +245,20 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                             ],
                           ),
                         ),
-                      ],
-                    ),
+                      ],),
               ],
             ),
           )
               : Container(
             color: Color(Constants.primaryBlue()),
-            height: 1370,
+            height: 1780,
             width: double.infinity,
             child: Column(
               children: [
                 Padding(
                   padding: EdgeInsets.all(15),
                   child: Text(
-                    "Adalena Services",
+                    "Perfectly curated for your wellfare",
                     style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
@@ -294,7 +293,7 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                               Align(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "24/7 Care",
+                                  "Specialized Care for Adults with Developmental Disabilities",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 27,
@@ -303,54 +302,7 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Vitae sed aliquam accumsan bibendum. Tellus eget diam duis ultricies nunc. ",
-                                style: TextStyle(
-                                    fontSize: 19,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(Constants.primaryWhite())
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child:  Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(12),
-                          child: CircleAvatar(
-                            minRadius: 80,
-                            maxRadius: 110,
-                            backgroundColor: Color(Constants.primaryGreen()),
-                            child: CircleAvatar(
-                              minRadius: 75,
-                              maxRadius: 105,
-                              backgroundImage: AssetImage("assets/images/background_2.png"),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "24/7 Care",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 27,
-                                      color: Color(Constants.primaryGreen())
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "Lorem ipsum dolor sit amet consectetur. Vitae sed aliquam accumsan bibendum. Tellus eget diam duis ultricies nunc. ",
+                                "ADALENA ADULT FAMILY HOME LLC specializes in providing care for adults with developmental disabilities. The facility is certified and equipped with the expertise and experience necessary to support these residents throughout all stages of life, ensuring personalized and comprehensive care.",
                                 style: TextStyle(
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600,
@@ -388,7 +340,7 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                               Align(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "24/7 Care",
+                                  "Medications Management",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 27,
@@ -397,7 +349,54 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                                 ),
                               ),
                               Text(
-                                "Lorem ipsum dolor sit amet consectetur. Vitae sed aliquam accumsan bibendum. Tellus eget diam duis ultricies nunc. ",
+                                "The facility offers comprehensive medications management services. Caregivers diligently track medication administration schedules and manage prescription refills. This service is crucial for maintaining the health and stability of residents, ensuring they receive their medications on time and as prescribed. ",
+                                style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(Constants.primaryWhite())
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child:  Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(12),
+                          child: CircleAvatar(
+                            minRadius: 80,
+                            maxRadius: 110,
+                            backgroundColor: Color(Constants.primaryGreen()),
+                            child: CircleAvatar(
+                              minRadius: 75,
+                              maxRadius: 105,
+                              backgroundImage: AssetImage("assets/images/food.jpg"),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Nutritious Meals and Comprehensive Dietary Accommodations",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 27,
+                                      color: Color(Constants.primaryGreen())
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Residents are provided with three nutritious meals daily—breakfast, lunch, and dinner. The facility accommodates any dietary restrictions or special doctor-prescribed diets to meet individual nutritional needs. Additionally, residents have access to coffee, tea, and snacks between meals, ensuring they are well-nourished and comfortable throughout the day.",
                                 style: TextStyle(
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600,
@@ -444,7 +443,6 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
                             child: Text(
@@ -508,12 +506,62 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
                     height: 400,
                     width: double.infinity,
                     child: Image.asset("assets/images/background_1.png",fit: BoxFit.cover,)),
-                SizedBox(
+                Container(
+                  color: Color(Constants.primaryBlue()),
                   height: 400,
                     width: double.infinity,
-                    child: Container(
-                      color: Colors.grey,
-                    )),
+                    child: SingleChildScrollView(
+                      child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+                              child: Text(
+                                "Amenities",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 32
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 300,
+                              width: double.infinity,
+                              child: ListView.builder(
+                                  itemCount: amenities.length,
+                                  itemBuilder: (context, index){
+                                    var amenity = amenities[index];
+                                    var amenityDetails = amenitiesDetails[index];
+                                    var iconImage = amenityIcons[index];
+
+                                    return ListTile(
+                                      leading: Image.asset(
+                                        iconImage,
+                                        height: 50,
+                                        width: 50,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                      title: Text(
+                                        amenity,
+                                        style:  TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(Constants.primaryGreen()),
+                                        ),
+                                      ),
+                                      subtitle: Text(
+                                        amenityDetails,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                            ),
+                          ]
+                      ),
+                    ),
+                ),
               ],
             ),
           )

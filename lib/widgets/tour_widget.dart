@@ -1,8 +1,13 @@
+import 'package:adult_family_home/controller/web_navigation_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../helpers/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../helpers/enums.dart';
 
 class TourWidget extends StatefulWidget {
   const TourWidget({super.key});
@@ -12,6 +17,7 @@ class TourWidget extends StatefulWidget {
 }
 
 class _TourWidgetState extends State<TourWidget> {
+  final WebNavigationController _webNavigationController = Get.find<WebNavigationController>();
   late GoogleMapController mapController;
 
   final LatLng _center = const LatLng(-23.5557714, -46.6395571);
@@ -30,7 +36,7 @@ class _TourWidgetState extends State<TourWidget> {
       height: width > 700 ? 750 : 1040,
       width: double.infinity,
       child: width > 700
-          ?Column(
+          ? Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
@@ -53,7 +59,9 @@ class _TourWidgetState extends State<TourWidget> {
                 height: 70,
                 width: 300,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Scaffold.of(context).openEndDrawer();
+                    },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(Constants.primaryBlue()),
                     elevation: 3.0,
@@ -89,7 +97,9 @@ class _TourWidgetState extends State<TourWidget> {
                           borderRadius: BorderRadius.zero
                       )
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    _webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                  },
                   child: ListTile(
                     title: Text(
                       "Contact Us Today",
@@ -264,7 +274,9 @@ class _TourWidgetState extends State<TourWidget> {
             height: 70,
             width: 300,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Color(Constants.primaryBlue()),
                   elevation: 3.0,
@@ -300,7 +312,9 @@ class _TourWidgetState extends State<TourWidget> {
                       borderRadius: BorderRadius.zero
                   )
               ),
-              onPressed: (){},
+              onPressed: (){
+                _webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+              },
               child: ListTile(
                 title: Text(
                   "Contact Us Today",
@@ -400,7 +414,7 @@ class _TourWidgetState extends State<TourWidget> {
                                   width: 40,
                                 ),
                                 title: Text(
-                                  "425-775-4440",
+                                  "206-806-3698",
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
                                       fontWeight: FontWeight.w600,

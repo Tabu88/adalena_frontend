@@ -48,8 +48,8 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
               Get.back();
             },
           ),
-          Divider(
-            color: Color(Constants.primaryGreen()),
+          const Divider(
+            color: Colors.white,
           ),
           DrawerTile(
             title: "Amenities",
@@ -58,8 +58,8 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
               Get.back();
             },
           ),
-          Divider(
-            color: Color(Constants.primaryGreen()),
+          const Divider(
+            color: Colors.white,
           ),
           DrawerTile(
             title: "Blog",
@@ -68,8 +68,8 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
               Get.back();
             },
           ),
-          Divider(
-            color: Color(Constants.primaryGreen()),
+          const Divider(
+            color: Colors.white,
           ),
           DrawerTile(
             title: "Contact Us",
@@ -78,8 +78,8 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
               Get.back();
             },
           ),
-          Divider(
-            color: Color(Constants.primaryGreen()),
+          const Divider(
+            color: Colors.white,
           ),
           DrawerTile(
             title: "About Us",
@@ -88,8 +88,8 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
               Get.back();
             },
           ),
-          Divider(
-            color: Color(Constants.primaryGreen()),
+          const Divider(
+            color: Colors.white,
           ),
         ],
       ),

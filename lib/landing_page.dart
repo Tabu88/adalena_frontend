@@ -94,7 +94,7 @@ class _LandingPageState extends State<LandingPage>  {
                     builder: (context) {
                       return OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                            fixedSize: Size(width * 0.21, 150),
+                            fixedSize: Size(width * 0.22, 150),
                             shape: RoundedRectangleBorder(
                               side:
                                   BorderSide(color: Color(Constants.primaryBlue())),
@@ -119,7 +119,7 @@ class _LandingPageState extends State<LandingPage>  {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        fixedSize: Size(width * 0.21, 150),
+                        fixedSize: Size(width * 0.22, 150),
                         shape: RoundedRectangleBorder(
                           side:
                               BorderSide(color: Color(Constants.primaryBlue())),

@@ -27,8 +27,8 @@ class _HomeWidgetsState extends State<HomeWidgets> {
     setState(() {
       _currentIndex = index;
       _scrollController.animateTo(
-        _currentIndex * 350.0, // Assumes each item has a height of 50.0
-        duration: Duration(milliseconds: 300),
+        _currentIndex * 350, // Assumes each item has a height of 50.0
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     });
@@ -202,6 +202,78 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 )
               ),
             )
+                : width < 580
+                ? Container(
+              alignment: Alignment.center,
+              height: 400,
+              width: double.infinity,
+              color: Color(Constants.primaryBlue()),
+              child: Container(
+                height: 350,
+                width: 500,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 50,
+                      left: 30,
+                      child: Image.asset(
+                        "assets/images/old_exercising.png",
+                        height: 250,
+                        width: 320,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      top: 100,
+                      right:20,
+                      child: Container(
+                          height: 260,
+                          width: 250,
+                          color: Color(Constants.primaryWhite()),
+                          padding: const EdgeInsets.only(left: 12,top: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "TRADITION",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(Constants.primaryBlue()),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5,),
+                                  Image.asset("assets/images/line.png",height: 13,width: 50,)
+                                ],
+                              ),
+                              Text(
+                                "The Adalena Experience",
+                                style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(Constants.primaryGreen()),
+                                    fontStyle: FontStyle.italic
+                                ),
+                              ),
+                              Text(
+                                      "Being situated in regular residential neighborhoods, these homes blend seamlessly into the community. "
+                                      "This traditional setting offers residents the familiarity of living in a standard home environment preserving the comfort of traditional living. "
+                                      "The traditional approach of adult family homes promotes close-knit interactions among residents and caregivers. ",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              Color(Constants.primaryBlue())),
+                                    )
+                                  ],
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
                 : Container(
               alignment: Alignment.center,
               height: 500,
@@ -257,15 +329,15 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 ),
                               ),
                               Text(
-                                      "Being situated in regular residential neighborhoods, these homes blend seamlessly into the community. "
-                                      "This traditional setting offers residents the familiarity of living in a standard home environment preserving the comfort of traditional living. "
-                                      "The traditional approach of adult family homes promotes close-knit interactions among residents and caregivers. ",
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color:
-                                              Color(Constants.primaryBlue())),
-                                    )
-                                  ],
+                                "Being situated in regular residential neighborhoods, these homes blend seamlessly into the community. "
+                                    "This traditional setting offers residents the familiarity of living in a standard home environment preserving the comfort of traditional living. "
+                                    "The traditional approach of adult family homes promotes close-knit interactions among residents and caregivers. ",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color:
+                                    Color(Constants.primaryBlue())),
+                              )
+                            ],
                           )
                       ),
                     )
@@ -333,6 +405,78 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 "ADALENA ADULT FAMILY HOME LLC is part of the SPANAWAY community, offering residents a chance to remain connected to a familiar locale. In ADALENA, the community atmosphere is akin to a family gathering, where residents and caregivers interact closely. The smaller number of residents at ADALENA means that the community is tight-knit, with each member receiving the attention they need",
                                 style: TextStyle(
                                     fontSize: 18,
+                                    color: Color(Constants.primaryWhite())
+                                ),
+                              )
+                            ],
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+                : width < 580
+                ? Container(
+              alignment: Alignment.center,
+              height: 400,
+              width: double.infinity,
+              color: Color(Constants.primaryWhite()),
+              child: Container(
+                // height: 350,
+                // width: 500,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 30,
+                      right: 20,
+                      child: Image.asset(
+                        "assets/images/old_fellas.png",
+                        height: 250,
+                        width: 350,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      left: 10,
+                      bottom:30,
+                      child: Container(
+                          height: 300,
+                          width: 250,
+                          color: Color(Constants.primaryBlue()),
+                          padding: const EdgeInsets.only(
+                              left: 20,
+                              top: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "COMMUNITY",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(Constants.primaryWhite()),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5,),
+                                  Image.asset("assets/images/line.png",height: 13,width: 50,)
+                                ],
+                              ),
+                              Text(
+                                "The Adalena Experience",
+                                style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(Constants.primaryGreen()),
+                                    fontStyle: FontStyle.italic
+                                ),
+                              ),
+                              Text(
+                                "ADALENA ADULT FAMILY HOME LLC is part of the SPANAWAY community, offering residents a chance to remain connected to a familiar locale. In ADALENA, the community atmosphere is akin to a family gathering, where residents and caregivers interact closely. The smaller number of residents at ADALENA means that the community is tight-knit, with each member receiving the attention they need",
+                                style: TextStyle(
+                                    fontSize: 14,
                                     color: Color(Constants.primaryWhite())
                                 ),
                               )
@@ -472,6 +616,75 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                 "Residents at ADALENA ADULT FAMILY HOME LLC experience the comfort and warmth of a home-like environment, which promotes a sense of security and well-being. With a higher caregiver-to-resident ratio, ADALENA ensures that each resident receives individualized attention and care. The increased attention from caregivers helps in promptly addressing any health issues or concerns that may arise.",
                                 style: TextStyle(
                                     fontSize: 18,
+                                    color: Color(Constants.primaryBlue())
+                                ),
+                              )
+                            ],
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+                : width < 580
+                ? Container(
+              alignment: Alignment.center,
+              height: 400,
+              width: double.infinity,
+              color: Color(Constants.primaryBlue()),
+              child: Container(
+                height: 350,
+                width: 500,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 30,
+                      left: 20,
+                      child: Image.asset(
+                        "assets/images/background_4.png",
+                        height: 250,
+                        width: 350,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20,
+                      right: 10,
+                      child: Container(
+                          height: 300,
+                          width: 250,
+                          color: Color(Constants.primaryWhite()),
+                          padding: const EdgeInsets.only(left: 20,top: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "WELLNESS",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: Color(Constants.primaryBlue()),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5,),
+                                  Image.asset("assets/images/line.png",height: 13,width: 50,)
+                                ],
+                              ),
+                              Text(
+                                "The Adalena Experience",
+                                style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(Constants.primaryGreen()),
+                                    fontStyle: FontStyle.italic
+                                ),
+                              ),
+                              Text(
+                                "Residents at ADALENA ADULT FAMILY HOME LLC experience the comfort and warmth of a home-like environment, which promotes a sense of security and well-being. With a higher caregiver-to-resident ratio, ADALENA ensures that each resident receives individualized attention and care. The increased attention from caregivers helps in promptly addressing any health issues or concerns that may arise.",
+                                style: TextStyle(
+                                    fontSize: 14,
                                     color: Color(Constants.primaryBlue())
                                 ),
                               )
@@ -762,7 +975,17 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                               var images = _houseImages[index];
                               return Container(
                                 child: InkWell(
-                                  onTap:(){},
+                                  onTap:(){
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context){
+                                          return Dialog(
+                                            child: InteractiveViewer(
+                                              child: Image.asset(images, fit: BoxFit.cover,),
+                                            ),
+                                          );
+                                        });
+                                  },
                                   onHover: (v) {
                                     if(v == true){
                                       color = Color(Constants.primaryBlue()).withOpacity(0.5);
@@ -809,8 +1032,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
           ),
         ),
         SliverToBoxAdapter(
-          child:
-          Padding(
+          child: Padding(
             padding: EdgeInsets.all(8.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
