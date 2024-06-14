@@ -1,8 +1,10 @@
 import 'package:adult_family_home/controller/adalena_controller.dart';
 import 'package:adult_family_home/widgets/form_label_widget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -37,6 +39,11 @@ class _ContactWidgetsState extends State<ContactWidgets> {
   String unclePhone = "+1(253) 785-1180";
   String auntPhone = "+1(206) 806-3698";
   String landLine = "+1(253) 455-7706";
+  final Uri _instaUrl = Uri.parse('https://www.instagram.com/adalenaafh/');
+  final Uri _fbUrl = Uri.parse('https://www.google.com/maps/place/47%C2%B005\'16.1%22N+122%C2%B024\'30.3%22W/@47.087797,-122.4109952,17z/data=!3m1!4b1!4m4!3m3!8m2!3d47.087797!4d-122.4084203?hl=en&entry=ttu');
+  final Uri _linkedUrl = Uri.parse('https://www.google.com/maps/place/47%C2%B005\'16.1%22N+122%C2%B024\'30.3%22W/@47.087797,-122.4109952,17z/data=!3m1!4b1!4m4!3m3!8m2!3d47.087797!4d-122.4084203?hl=en&entry=ttu');
+
+
   _init(){
     // _adalenaController.resetController();
   }
@@ -52,6 +59,30 @@ class _ContactWidgetsState extends State<ContactWidgets> {
          duration: Duration(seconds: 3),
        ),
     );
+  }
+
+  Future<void> _launchInsta() async {
+    if (await canLaunchUrl(_instaUrl)) {
+      await launchUrl(_instaUrl);
+    } else {
+      throw Exception('Could not launch $_instaUrl');
+    }
+  }
+
+  Future<void> _launchFacebook() async {
+    if (await canLaunchUrl(_fbUrl)) {
+      await launchUrl(_fbUrl);
+    } else {
+      throw Exception('Could not launch $_fbUrl');
+    }
+  }
+
+  Future<void> _launchLinkedIn() async {
+    if (await canLaunchUrl(_linkedUrl)) {
+      await launchUrl(_linkedUrl);
+    } else {
+      throw Exception('Could not launch $_linkedUrl');
+    }
   }
 
 
@@ -819,26 +850,35 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: [
-                                    Image.asset(
-                                      "assets/images/insta_blue.png",
-                                      height: 50,
-                                      width: 50,
+                                    GestureDetector(
+                                      onTap: _launchInsta,
+                                      child: Image.asset(
+                                        "assets/images/insta_blue.png",
+                                        height: 50,
+                                        width: 50,
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: 15,
                                     ),
-                                    Image.asset(
-                                      "assets/images/facebook_blue.png",
-                                      height: 40,
-                                      width: 40,
+                                    GestureDetector(
+                                      onTap: _launchFacebook,
+                                      child: Image.asset(
+                                        "assets/images/facebook_blue.png",
+                                        height: 40,
+                                        width: 40,
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: 15,
                                     ),
-                                    Image.asset(
-                                      "assets/images/linked_in_blue.png",
-                                      height: 50,
-                                      width: 50,
+                                    GestureDetector(
+                                      onTap: _launchLinkedIn,
+                                      child: Image.asset(
+                                        "assets/images/linked_in_blue.png",
+                                        height: 50,
+                                        width: 50,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -1028,26 +1068,35 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
-                              Image.asset(
-                                "assets/images/insta_blue.png",
-                                height: 50,
-                                width: 50,
+                              GestureDetector(
+                                onTap: _launchInsta,
+                                child: Image.asset(
+                                  "assets/images/insta_blue.png",
+                                  height: 50,
+                                  width: 50,
+                                ),
                               ),
                               const SizedBox(
                                 width: 15,
                               ),
-                              Image.asset(
-                                "assets/images/facebook_blue.png",
-                                height: 40,
-                                width: 40,
+                              GestureDetector(
+                                onTap: _launchFacebook,
+                                child: Image.asset(
+                                  "assets/images/facebook_blue.png",
+                                  height: 40,
+                                  width: 40,
+                                ),
                               ),
                               const SizedBox(
                                 width: 15,
                               ),
-                              Image.asset(
-                                "assets/images/linked_in_blue.png",
-                                height: 50,
-                                width: 50,
+                              GestureDetector(
+                                onTap: _launchLinkedIn,
+                                child: Image.asset(
+                                  "assets/images/linked_in_blue.png",
+                                  height: 50,
+                                  width: 50,
+                                ),
                               ),
                             ],
                           ),

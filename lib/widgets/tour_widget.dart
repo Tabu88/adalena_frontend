@@ -782,7 +782,7 @@ class _TourWidgetState extends State<TourWidget> {
                         borderRadius: BorderRadius.zero
                     )
                 ),
-                onPressed: (){
+                onPressed: () {
                   Get.toNamed(
                     Routes.getValueForRoute(RoutesEnum.contactUs),
                   );
