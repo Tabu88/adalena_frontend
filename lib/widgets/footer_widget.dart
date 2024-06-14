@@ -4,8 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../helpers/constants.dart';
 import '../helpers/enums.dart';
+import '../helpers/routes_enums.dart';
+import '../routes.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class FooterWidget extends StatefulWidget {
   const FooterWidget({super.key});
@@ -15,7 +19,10 @@ class FooterWidget extends StatefulWidget {
 }
 
 class _FooterWidgetState extends State<FooterWidget> {
-  final WebNavigationController webNavigationController = Get.find<WebNavigationController>();
+  final WebNavigationController webNavigationController = Get.put(WebNavigationController());
+  String unclePhone = "+1(253) 785-1180";
+  String auntPhone = "+1(206) 806-3698";
+  String landLine = "+1(253) 455-7706";
 
   void _copyText(BuildContext context, String textToCopy) {
     Clipboard.setData(ClipboardData(text: textToCopy));
@@ -35,7 +42,7 @@ class _FooterWidgetState extends State<FooterWidget> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 15),
-      height: width > 700 ? 500 :width < 580 ? 770 : 380,
+      height: width > 700 ? 500 : width < 600 ? 810 : 400,
       width: double.infinity,
       color: Color(Constants.primaryBlue()),
       child: width > 700
@@ -99,19 +106,101 @@ class _FooterWidgetState extends State<FooterWidget> {
                     children: [
                       Image.asset("assets/images/phone.png",height: 30,width: 30,),
                       const SizedBox(width: 15,),
-                      TextButton(
-                        onPressed: (){
-                          _copyText(context, "206-806-3698");
-                        },
-                        child: const Text(
-                          "206-806-3698",
-                          style: TextStyle(
-                            fontSize: 22,
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic
+                      Wrap(
+                        direction: Axis.horizontal,
+                        crossAxisAlignment: WrapCrossAlignment.start,
+                        alignment: WrapAlignment.start,
+                        spacing: 5.0,
+                        runSpacing: 8.0,
+                        children: [
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
+                                if (await canLaunch("tel:$unclePhone")) {
+                              await launch("tel:$unclePhone");
+                              } else {
+                              throw 'Could not launch tel:$unclePhone';
+                              }
+                              } else {
+                              // For non-web platforms (assume mobile)
+                              if (await canLaunch("tel:$unclePhone")) {
+                              await launch("tel:$unclePhone");
+                              } else {
+                              throw 'Could not launch tel:$unclePhone';
+                              }
+                              }
+                            },
+                            child: Text(
+                              "253-785-1180",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 20
+                              ),
+                            ),
                           ),
-                        ),
-                      )
+                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
+                                if (await canLaunch("tel:$landLine")) {
+                              await launch("tel:$landLine");
+                              } else {
+                              throw 'Could not launch tel:$landLine';
+                              }
+                              } else {
+                              // For non-web platforms (assume mobile)
+                              if (await canLaunch("tel:$landLine")) {
+                              await launch("tel:$landLine");
+                              } else {
+                              throw 'Could not launch tel:$landLine';
+                              }
+                              }
+                            },
+                            child: Text(
+                              "253-455-7706",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 20
+                              ),
+                            ),
+                          ),
+                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
+                                if (await canLaunch("tel:$auntPhone")) {
+                              await launch("tel:$auntPhone");
+                              } else {
+                              throw 'Could not launch tel:$auntPhone';
+                              }
+                              } else {
+                              // For non-web platforms (assume mobile)
+                              if (await canLaunch("tel:$auntPhone")) {
+                              await launch("tel:$auntPhone");
+                              } else {
+                              throw 'Could not launch tel:$auntPhone';
+                              }
+                              }
+                            },
+                            child: Text(
+                              "206-806-3698",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 20
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20,),
@@ -141,7 +230,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                 children: [
                   TextButton(
                     onPressed: (){
-                      webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.aboutUs),
+                      );
                     },
                     child: const Text(
                       "About Adalena",
@@ -157,7 +248,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                   ),
                   TextButton(
                     onPressed: (){
-                      webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.contactUs),
+                      );
                     },
                     child: const Text(
                       "Contact Us",
@@ -171,40 +264,49 @@ class _FooterWidgetState extends State<FooterWidget> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                       children: [
-                         CircleAvatar(
-                           backgroundColor: const Color(0xFF76C352),
-                           radius: 30,
-                           child: Image.asset("assets/images/house.png",height: 40,width: 40,),
-                         ),
-                         const Text(
-                           "EQUAL HOUSING \n OPPORTUNITY",
-                           style: TextStyle(
-                             color: Color(0xFF76C352),
-                             fontWeight: FontWeight.w600,
-                             fontSize: 10
-                           ),
-                         )
-                       ],
-                     ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Color(0xFF76C352),
-                        radius: 30,
-                        child: Image.asset(
-                          "assets/images/disabled.png",
-                          height: 40,
-                          width: 40,
-                        ),
-                      )
-                    ],
+                  CircleAvatar(
+                    backgroundColor: Color(0xFF76C352),
+                    radius: 30,
+                    child: Image.asset(
+                      "assets/images/disabled.png",
+                      height: 40,
+                      width: 40,
+                    ),
                   )
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Column(
+                  //      children: [
+                  //        CircleAvatar(
+                  //          backgroundColor: const Color(0xFF76C352),
+                  //          radius: 30,
+                  //          child: Image.asset("assets/images/house.png",height: 40,width: 40,),
+                  //        ),
+                  //        const Text(
+                  //          "EQUAL HOUSING \n OPPORTUNITY",
+                  //          style: TextStyle(
+                  //            color: Color(0xFF76C352),
+                  //            fontWeight: FontWeight.w600,
+                  //            fontSize: 10
+                  //          ),
+                  //        )
+                  //      ],
+                  //    ),
+                  //     const SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //     CircleAvatar(
+                  //       backgroundColor: Color(0xFF76C352),
+                  //       radius: 30,
+                  //       child: Image.asset(
+                  //         "assets/images/disabled.png",
+                  //         height: 40,
+                  //         width: 40,
+                  //       ),
+                  //     )
+                  //   ],
+                  // )
                 ],
               )
             ],
@@ -216,7 +318,11 @@ class _FooterWidgetState extends State<FooterWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Get.toNamed(
+                      Routes.getValueForRoute(RoutesEnum.privacyPolicy),
+                    );
+                  },
                   child: Text(
                       "PRIVACY POLICY",
                     style: TextStyle(
@@ -228,7 +334,11 @@ class _FooterWidgetState extends State<FooterWidget> {
                 ),
                 const SizedBox(width: 20,),
                 TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Get.toNamed(
+                      Routes.getValueForRoute(RoutesEnum.terms),
+                    );
+                  },
                   child: Text(
                       "TERMS AND CONDITIONS",
                     style: TextStyle(
@@ -243,7 +353,7 @@ class _FooterWidgetState extends State<FooterWidget> {
           )
         ],
       )
-          : width < 580
+          : width < 600
           ? Column(
         crossAxisAlignment: CrossAxisAlignment.center,
           children : [
@@ -278,36 +388,113 @@ class _FooterWidgetState extends State<FooterWidget> {
             Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Image.asset("assets/images/phone.png",height: 30,width: 30,),
-                            const SizedBox(width: 10,),
-                            TextButton(
-                              onPressed: (){
-                                _copyText(context, "206-806-3698");
-                              },
-                              child: const Text(
-                                "206 - 806 - 3698",
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontStyle: FontStyle.italic
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Wrap(
+                              direction: Axis.horizontal,
+                              crossAxisAlignment: WrapCrossAlignment.start,
+                              alignment: WrapAlignment.start,
+                              spacing: 5.0,
+                              runSpacing: 8.0,
+                              children: [
+                                Image.asset("assets/images/phone.png",height: 30,width: 30,),
+                                const SizedBox(width: 10,),
+                                TextButton(
+                                  onPressed: () async {
+                                    if (kIsWeb) {
+                                      // Check if the platform is web
+                                      if (await canLaunch("tel:$unclePhone")) {
+                                    await launch("tel:$unclePhone");
+                                    } else {
+                                    throw 'Could not launch tel:$unclePhone';
+                                    }
+                                    } else {
+                                    // For non-web platforms (assume mobile)
+                                    if (await canLaunch("tel:$unclePhone")) {
+                                    await launch("tel:$unclePhone");
+                                    } else {
+                                    throw 'Could not launch tel:$unclePhone';
+                                    }
+                                    }
+                                  },
+                                  child: Text(
+                                    "253-785-1180",
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(Constants.primaryWhite()),
+                                        fontSize: 20
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
+                                Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                                TextButton(
+                                  onPressed: () async {
+                                    if (kIsWeb) {
+                                      // Check if the platform is web
+                                      if (await canLaunch("tel:$landLine")) {
+                                    await launch("tel:$landLine");
+                                    } else {
+                                    throw 'Could not launch tel:$landLine';
+                                    }
+                                    } else {
+                                    // For non-web platforms (assume mobile)
+                                    if (await canLaunch("tel:$landLine")) {
+                                    await launch("tel:$landLine");
+                                    } else {
+                                    throw 'Could not launch tel:$landLine';
+                                    }
+                                    }
+                                  },
+                                  child: Text(
+                                    "253-455-7706",
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(Constants.primaryWhite()),
+                                        fontSize: 20
+                                    ),
+                                  ),
+                                ),
+                                Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                                TextButton(
+                                  onPressed: () async {
+                                    if (kIsWeb) {
+                                      // Check if the platform is web
+                                      if (await canLaunch("tel:$auntPhone")) {
+                                    await launch("tel:$auntPhone");
+                                    } else {
+                                    throw 'Could not launch tel:$auntPhone';
+                                    }
+                                    } else {
+                                    // For non-web platforms (assume mobile)
+                                    if (await canLaunch("tel:$auntPhone")) {
+                                    await launch("tel:$auntPhone");
+                                    } else {
+                                    throw 'Could not launch tel:$auntPhone';
+                                    }
+                                    }
+                                  },
+                                  child: Text(
+                                    "206-806-3698",
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(Constants.primaryWhite()),
+                                        fontSize: 20
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                       ),
                       const SizedBox(height: 15,),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/images/mail.png",height: 30,width: 30,),
                             const SizedBox(width: 10,),
@@ -335,7 +522,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                 children: [
                   TextButton(
                     onPressed: (){
-                      webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.aboutUs),
+                      );
                     },
                     child: const Text(
                       "About Adalena",
@@ -351,7 +540,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                   ),
                   TextButton(
                     onPressed: (){
-                      webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.contactUs),
+                      );
                     },
                     child: const Text(
                       "Contact Us",
@@ -365,45 +556,17 @@ class _FooterWidgetState extends State<FooterWidget> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: const Color(0xFF76C352),
-                            radius: 30,
-                            child: Image.asset("assets/images/house.png",height: 30,width: 30,),
-                          ),
-                          const Text(
-                            "EQUAL HOUSING \n OPPORTUNITY",
-                            style: TextStyle(
-                                color: Color(0xFF76C352),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Color(0xFF76C352),
-                        radius: 30,
-                        child: Image.asset(
-                          "assets/images/disabled.png",
-                          height: 30,
-                          width: 30,
-                        ),
-                      ),
-
-                    ],
+                  CircleAvatar(
+                    backgroundColor: Color(0xFF76C352),
+                    radius: 30,
+                    child: Image.asset(
+                      "assets/images/disabled.png",
+                      height: 30,
+                      width: 30,
+                    ),
                   ),
                 ],
               ),
-
             const SizedBox(height: 30,),
             Align(
               alignment: Alignment.bottomCenter,
@@ -436,8 +599,12 @@ class _FooterWidgetState extends State<FooterWidget> {
                     )
                   ),
                   TextButton(
-                    onPressed: (){},
-                    child: Text(
+                    onPressed: (){
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.privacyPolicy),
+                      );
+                    },
+                    child: const Text(
                       "PRIVACY POLICY",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -448,8 +615,12 @@ class _FooterWidgetState extends State<FooterWidget> {
                   ),
                   const SizedBox(height: 10,),
                   TextButton(
-                    onPressed: (){},
-                    child: Text(
+                    onPressed: (){
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.terms),
+                      );
+                    },
+                    child: const Text(
                       "TERMS AND CONDITIONS",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -507,35 +678,118 @@ class _FooterWidgetState extends State<FooterWidget> {
                 children: [
                   Row(
                     children: [
-                      Image.asset("assets/images/insta.png",height: 20,width: 20,),
+                      Image.asset("assets/images/insta.png",height: 25,width: 25,),
                       const SizedBox(
                         width: 15,
                       ),
-                      Image.asset("assets/images/facebook.png",height: 20,width: 20,),
+                      Image.asset("assets/images/facebook.png",height: 25,width: 25,),
                       const SizedBox(
                         width: 15,
                       ),
-                      Image.asset("assets/images/linkedin.png",height: 20,width: 20,),
+                      Image.asset("assets/images/linkedin.png",height: 25,width: 25,),
                     ],
                   ),
                   const SizedBox(height: 30,),
                   Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset("assets/images/phone.png",height: 20,width: 20,),
                       const SizedBox(width: 10,),
-                      TextButton(
-                        onPressed: (){
-                          _copyText(context, "206-806-3698");
-                        },
-                        child: const Text(
-                          "206-806-3698",
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontStyle: FontStyle.italic
+                      Wrap(
+                        direction: Axis.horizontal,
+                        crossAxisAlignment: WrapCrossAlignment.start,
+                        alignment: WrapAlignment.start,
+                        spacing: 5.0,
+                        runSpacing: 8.0,
+                        children: [
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
+                                if (await canLaunch("tel:$unclePhone")) {
+                              await launch("tel:$unclePhone");
+                              } else {
+                              throw 'Could not launch tel:$unclePhone';
+                              }
+                              } else {
+                              // For non-web platforms (assume mobile)
+                              if (await canLaunch("tel:$unclePhone")) {
+                              await launch("tel:$unclePhone");
+                              } else {
+                              throw 'Could not launch tel:$unclePhone';
+                              }
+                              }
+                            },
+                            child: Text(
+                              "253-785-1180",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 18
+                              ),
+                            ),
                           ),
-                        ),
-                      )
+                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
+                                if (await canLaunch("tel:$landLine")) {
+                              await launch("tel:$landLine");
+                              } else {
+                              throw 'Could not launch tel:$landLine';
+                              }
+                              } else {
+                              // For non-web platforms (assume mobile)
+                              if (await canLaunch("tel:$landLine")) {
+                              await launch("tel:$landLine");
+                              } else {
+                              throw 'Could not launch tel:$landLine';
+                              }
+                              }
+                            },
+                            child: Text(
+                              "253-455-7706",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 18
+                              ),
+                            ),
+                          ),
+                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
+                                if (await canLaunch("tel:$auntPhone")) {
+                              await launch("tel:$auntPhone");
+                              } else {
+                              throw 'Could not launch tel:$auntPhone';
+                              }
+                              } else {
+                              // For non-web platforms (assume mobile)
+                              if (await canLaunch("tel:$auntPhone")) {
+                         await launch("tel:$auntPhone");
+                              } else {
+                              throw 'Could not launch tel:$auntPhone';
+                              }
+                              }
+                            },
+                            child: Text(
+                              "206-806-3698",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 18
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   const SizedBox(height: 15,),
@@ -550,7 +804,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                         child: const Text(
                           "adalenaafh@gmail.com",
                           style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 18,
                               color: Colors.white,
                               fontStyle: FontStyle.italic
                           ),
@@ -565,7 +819,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                 children: [
                   TextButton(
                     onPressed: (){
-                      webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.aboutUs),
+                      );
                     },
                     child: const Text(
                       "About Adalena",
@@ -581,7 +837,9 @@ class _FooterWidgetState extends State<FooterWidget> {
                   ),
                   TextButton(
                     onPressed: (){
-                      webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
+                      Get.toNamed(
+                        Routes.getValueForRoute(RoutesEnum.contactUs),
+                      );
                     },
                     child: const Text(
                       "Contact Us",
@@ -595,40 +853,41 @@ class _FooterWidgetState extends State<FooterWidget> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: const Color(0xFF76C352),
-                            radius: 20,
-                            child: Image.asset("assets/images/house.png",height: 20,width: 20,),
-                          ),
-                          const Text(
-                            "EQUAL HOUSING \n OPPORTUNITY",
-                            style: TextStyle(
-                                color: Color(0xFF76C352),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10
-                            ),
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Color(0xFF76C352),
-                        radius: 20,
-                        child: Image.asset(
-                          "assets/images/disabled.png",
-                          height: 20,
-                          width: 20,
-                        ),
-                      )
-                    ],
+                  CircleAvatar(
+                    backgroundColor: Color(0xFF76C352),
+                    radius: 20,
+                    child: Image.asset(
+                      "assets/images/disabled.png",
+                      height: 20,
+                      width: 20,
+                    ),
                   )
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     // Column(
+                  //     //   children: [
+                  //     //     CircleAvatar(
+                  //     //       backgroundColor: const Color(0xFF76C352),
+                  //     //       radius: 20,
+                  //     //       child: Image.asset("assets/images/house.png",height: 20,width: 20,),
+                  //     //     ),
+                  //     //     const Text(
+                  //     //       "EQUAL HOUSING \n OPPORTUNITY",
+                  //     //       style: TextStyle(
+                  //     //           color: Color(0xFF76C352),
+                  //     //           fontWeight: FontWeight.w600,
+                  //     //           fontSize: 10
+                  //     //       ),
+                  //     //     )
+                  //     //   ],
+                  //     // ),
+                  //     const SizedBox(
+                  //       width: 10,
+                  //     ),
+                  //
+                  //   ],
+                  // )
                 ],
               )
             ],
@@ -640,8 +899,12 @@ class _FooterWidgetState extends State<FooterWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: (){},
-                  child: Text(
+                  onPressed: (){
+                    Get.toNamed(
+                      Routes.getValueForRoute(RoutesEnum.privacyPolicy),
+                    );
+                  },
+                  child: const  Text(
                     "PRIVACY POLICY",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -652,8 +915,12 @@ class _FooterWidgetState extends State<FooterWidget> {
                 ),
                 const SizedBox(width: 20,),
                 TextButton(
-                  onPressed: (){},
-                  child: Text(
+                  onPressed: (){
+                    Get.toNamed(
+                      Routes.getValueForRoute(RoutesEnum.terms),
+                    );
+                  },
+                  child: const Text(
                     "TERMS AND CONDITIONS",
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -667,7 +934,6 @@ class _FooterWidgetState extends State<FooterWidget> {
           )
         ]
       ),
-
     );
   }
 }

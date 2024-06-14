@@ -6,6 +6,8 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../controller/web_navigation_controller.dart';
 import '../../helpers/constants.dart';
+import '../../helpers/routes_enums.dart';
+import '../../routes.dart';
 
 class AdalenaDrawer extends StatefulWidget {
   const AdalenaDrawer({super.key});
@@ -43,9 +45,10 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
           DrawerTile(
             title: "Home",
             navigation:() {
-              webNavigationController.adalenaPageType.value =
-                  AdalenaPageType.home;
-              Get.back();
+              Get.toNamed(
+                Routes.getValueForRoute(RoutesEnum.home),
+              );
+              // Get.back();
             },
           ),
           const Divider(
@@ -54,18 +57,10 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
           DrawerTile(
             title: "Amenities",
             navigation: () {
-              webNavigationController.adalenaPageType.value = AdalenaPageType.amenities;
-              Get.back();
-            },
-          ),
-          const Divider(
-            color: Colors.white,
-          ),
-          DrawerTile(
-            title: "Blog",
-            navigation: () {
-              webNavigationController.adalenaPageType.value = AdalenaPageType.blog;
-              Get.back();
+              Get.toNamed(
+                Routes.getValueForRoute(RoutesEnum.amenities),
+              );
+              // Get.back();
             },
           ),
           const Divider(
@@ -74,8 +69,10 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
           DrawerTile(
             title: "Contact Us",
             navigation: () {
-              webNavigationController.adalenaPageType.value = AdalenaPageType.contactUs;
-              Get.back();
+              Get.toNamed(
+                Routes.getValueForRoute(RoutesEnum.contactUs),
+              );
+              // Get.back();
             },
           ),
           const Divider(
@@ -84,8 +81,10 @@ class _AdalenaDrawerState extends State<AdalenaDrawer> {
           DrawerTile(
             title: "About Us",
             navigation: () {
-              webNavigationController.adalenaPageType.value = AdalenaPageType.aboutUs;
-              Get.back();
+              Get.toNamed(
+                Routes.getValueForRoute(RoutesEnum.aboutUs),
+              );
+              // Get.back();
             },
           ),
           const Divider(

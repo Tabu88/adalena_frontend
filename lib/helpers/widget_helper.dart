@@ -1,7 +1,9 @@
+import 'package:adult_family_home/helpers/routes_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../routes.dart';
 import 'constants.dart';
 
 
@@ -33,6 +35,34 @@ class WidgetHelper{
             ),
           ),
         ]
+    );
+  }
+
+  static Widget dashboardTiles (){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        WidgetHelper.tileElement("Home", () {
+          Get.toNamed(
+            Routes.getValueForRoute(RoutesEnum.home),
+          );
+        }),
+        WidgetHelper.tileElement("Amenities", (){
+          Get.toNamed(
+            Routes.getValueForRoute(RoutesEnum.amenities),
+          );
+        }),
+        WidgetHelper.tileElement("Contact Us", (){
+          Get.toNamed(
+            Routes.getValueForRoute(RoutesEnum.contactUs),
+          );
+        }),
+        WidgetHelper.tileElement("About Us", (){
+          Get.toNamed(
+            Routes.getValueForRoute(RoutesEnum.aboutUs),
+          );
+        }),
+      ],
     );
   }
 

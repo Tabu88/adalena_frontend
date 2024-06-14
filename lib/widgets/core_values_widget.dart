@@ -24,10 +24,10 @@ class CoreValueWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width  = MediaQuery.of(context).size.width;
-    return width > 700
+    return width > 800
         ? SizedBox(
-      height: 250,
-      width: 700,
+      height: 360,
+      width: 850,
       child: Stack(
         children: [
           Positioned(
@@ -43,8 +43,8 @@ class CoreValueWidget extends StatelessWidget {
                               color: Color(Constants.primaryBlue())
                           )
                       ),
-                      height: 200,
-                      width: 300,
+                      height: 350,
+                      width: 250,
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
@@ -61,20 +61,23 @@ class CoreValueWidget extends StatelessWidget {
                     ),
                     Container(
                       color: Color(Constants.primaryBlue()),
-                      height: 200,
-                      width: 300,
+                      height: 400,
+                      width: 450,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              "For Employees",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Color(Constants.primaryGreen())
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                "For Employees",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Color(Constants.primaryGreen())
+                                ),
                               ),
                             ),
                           ),
@@ -87,8 +90,8 @@ class CoreValueWidget extends StatelessWidget {
                                 fontSize: 17,
                                 color: Color(Constants.primaryWhite())
                               ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
+                              // overflow: TextOverflow.ellipsis,
+                              // maxLines: 4,
                             ),
                           ),
                           Divider(
@@ -114,8 +117,8 @@ class CoreValueWidget extends StatelessWidget {
                                   fontSize: 17,
                                   color: Color(Constants.primaryWhite())
                               ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
+                              // overflow: TextOverflow.ellipsis,
+                              // maxLines: 4,
                             ),
                           ),
                         ],
@@ -141,7 +144,7 @@ class CoreValueWidget extends StatelessWidget {
           initiallyExpanded: true,
           backgroundColor: Color(Constants.primaryWhite()),
           collapsedBackgroundColor: Color(Constants.primaryBlue()),
-          iconColor: Color(Constants.primaryBlue()),
+          iconColor: Color(Constants.primaryWhite()),
           expandedAlignment: Alignment.center,
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           title: Row(

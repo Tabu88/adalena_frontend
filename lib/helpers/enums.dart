@@ -1,5 +1,5 @@
  enum AdalenaPageType{
-  home ,aboutUs, contactUs, amenities,blog
+  home ,aboutUs, contactUs, amenities,
  }
 
  enum AdalenaPages{
@@ -7,5 +7,4 @@
   about,
   contact,
   amenities,
-  blog
  }
