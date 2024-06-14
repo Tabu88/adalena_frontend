@@ -72,7 +72,7 @@ class _FooterWidgetState extends State<FooterWidget> {
     double width = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 15),
-      height: width > 700 ? 500 : width < 600 ? 810 : 400,
+      height: width > 700 ? 500 : width < 600 ? 840 : 400,
       width: double.infinity,
       color: Color(Constants.primaryBlue()),
       child: width > 700

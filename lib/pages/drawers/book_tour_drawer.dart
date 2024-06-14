@@ -26,6 +26,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
    int _currentStep = 0;
    bool _firstList = true;
    bool isLoading = false;
+   late double widthVal ;
 
    void _init(){
      _adalenaController.resetController();
@@ -113,6 +114,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
   Widget build(BuildContext context) {
      _adalenaController.validateError.value = "";
      double width = MediaQuery.of(context).size.width;
+     widthVal = width;
     return  Drawer(
       backgroundColor: Color(Constants.primaryWhite()),
       width: double.infinity,
@@ -144,7 +146,12 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                         if (_currentStep >= getFirstSteps().length - 1) {
                           return const SizedBox();
                         } else {
-                          return Row(
+                          return Wrap(
+                            direction: Axis.horizontal,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            alignment: WrapAlignment.start,
+                            spacing: 5.0,
+                            runSpacing: 8.0,
                             children: [
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
@@ -294,16 +301,15 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
           fontSize: 18,
           color: Color(Constants.primaryGreen())
       ),),
-      content: Container(
-        child: Column(
+      content: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Text(
                 "What kind of tour are you requesting?",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: widthVal < 500 ? 14 :20,
                   color: Color(Constants.primaryBlue())
                 ),
               ),
@@ -312,7 +318,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                fixedSize: const Size(250,80),
+                fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                 shape: const RoundedRectangleBorder (
                     borderRadius: BorderRadius.zero
                 )
@@ -336,7 +342,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -360,7 +366,6 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
              SizedBox(height: 40,child: Text("${_adalenaController.validateError.value}",style: TextStyle(color: Colors.red),),))
           ],
         ),
-      )
     ),//type of tour
     Step(
         state: _currentStep > 1 ? StepState.complete : StepState.indexed,
@@ -377,11 +382,11 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Text(
                 "Could you tell me who is interested in moving to Adalena?",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: widthVal < 500 ? 14 : 20,
                   color: Color(Constants.primaryBlue())
                 ),
               ),
@@ -390,7 +395,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                fixedSize: const Size(250,80),
+                fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -414,7 +419,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -438,7 +443,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -462,7 +467,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -486,7 +491,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -510,7 +515,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -555,7 +560,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               child: Text(
                 "What is your timeline for potentially making a move?",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: widthVal < 500 ? 14 : 20,
                   color: Color(Constants.primaryBlue())
                 ),
               ),
@@ -564,7 +569,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                fixedSize: const Size(250,80),
+                fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -588,7 +593,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -612,7 +617,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -636,7 +641,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -681,7 +686,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               child: Text(
                 "What is most important to you when choosing a senior living community?",
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: widthVal < 500 ? 14 : 20,
                   color: Color(Constants.primaryBlue())
                 ),
               ),
@@ -690,7 +695,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                fixedSize: const Size(250,80),
+                fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -714,7 +719,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                  fixedSize: const Size(250,80),
+                  fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero
                   )
@@ -759,7 +764,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 child: Text(
                   "When would you like to schedule your visit?",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: widthVal < 500 ? 14 : 20,
                       color: Color(Constants.primaryBlue())
                   ),
                 ),
@@ -848,7 +853,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
             ],
           ),
         )
-    ),//date&time*
+    ),//date time
     Step(
         state: _currentStep > 5 ? StepState.complete : StepState.indexed,
         isActive: _currentStep >= 5,
@@ -868,7 +873,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 child: Text(
                   "How did you hear about us?",
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: widthVal < 500 ? 14 : 20,
                       color: Color(Constants.primaryBlue())
                   ),
                 ),
@@ -877,7 +882,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80),
+                    fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
@@ -901,7 +906,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80),
+                    fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
@@ -925,7 +930,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80),
+                    fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
@@ -949,7 +954,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80),
+                    fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
@@ -973,7 +978,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80),
+                    fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
@@ -1020,7 +1025,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                   child: Text(
                     "What is your full name?",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: widthVal < 500 ? 14 : 20,
                         color: Color(Constants.primaryBlue())
                     ),
                   ),
@@ -1075,7 +1080,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                   child: Text(
                     "What is your email?",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: widthVal < 500 ? 14 : 20,
                         color: Color(Constants.primaryBlue())
                     ),
                   ),
@@ -1150,7 +1155,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 child: Text(
                   "You will contacted shortly through email",
                   style: TextStyle(
-                      fontSize: 30,
+                      fontSize:widthVal < 500 ? 16 : 30,
                       color: Color(Constants.primaryBlue())
                   ),
                 ),
@@ -1159,7 +1164,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: isSelected ? Color(Constants.primaryGreen()) : Color(Constants.primaryBlue()),
-                    fixedSize: const Size(250,80),
+                    fixedSize: widthVal < 500 ? const Size(100,50): const Size(250,80),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero
                     )
@@ -1180,7 +1185,6 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
           ),
         )
     ),//feature*
-   //personal details
-  ];
+     ];
 
 }

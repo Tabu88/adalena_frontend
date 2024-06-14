@@ -63,6 +63,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  Text("$width"),
                   Builder(
                       builder: (context) {
                         return OutlinedButton(
@@ -1250,7 +1251,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child:  Container(
-                  height: width > 1400 ? 850 : 2200,
+                  height: width > 980 ? 850 : 2270,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Color(Constants.primaryWhite()),
@@ -1290,7 +1291,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                             const SizedBox(height: 15,),
                             Container(
                               width : 1100,
-                              height: width > 1400 ? 650 : 2000,
+                              height: width > 980 ? 650 : 2000,
                               alignment: Alignment.topCenter,
                               child: SingleChildScrollView(
                                 child: width > 980

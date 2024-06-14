@@ -37,7 +37,7 @@ class _TourWidgetState extends State<TourWidget> {
     double width  = MediaQuery.of(context).size.width;
     return Container(
       color: Color(Constants.primaryWhite()),
-      height: width > 1300 ? 900 : width > 830 ? 950 : 1200,
+      height: width > 1300 ? 900 : width > 830 ? 950 : 1300,
       width: double.infinity,
       child: width > 1300
           ? Column(
@@ -808,7 +808,7 @@ class _TourWidgetState extends State<TourWidget> {
             Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 100),
+                    padding: const EdgeInsets.only(top: 150),
                     child: Container(
                       child: Column(
                         children: [
