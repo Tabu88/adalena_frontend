@@ -119,8 +119,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
       backgroundColor: Color(Constants.primaryWhite()),
       width: double.infinity,
       child:  width < 580
-          ? Expanded(
-                child: Theme(
+          ? Theme(
                   data: Theme.of(context).copyWith(
                       colorScheme: ColorScheme.light(
                           primary: Color(Constants.primaryGreen()))),
@@ -189,28 +188,29 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                       },
                     ),
                   ),
-                ),
-              )
-          : Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            flex: 1,
-            child: SizedBox(
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(Icons.arrow_back,size: 30,color: Color(Constants.primaryBlue()),),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Theme(
+                )
+          :
+      // Row(
+      //   crossAxisAlignment: CrossAxisAlignment.center,
+      //   children: [
+      //     Expanded(
+      //       flex: 1,
+      //       child: SizedBox(
+      //         child: Align(
+      //           alignment: Alignment.topLeft,
+      //           child: IconButton(
+      //             onPressed: () {
+      //               Get.back();
+      //             },
+      //             icon: Icon(Icons.arrow_back,size: 30,color: Color(Constants.primaryBlue()),),
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //     Expanded(
+      //       flex: 4,
+      //       child:
+            Theme(
               data: Theme.of(context).copyWith(
                 colorScheme: ColorScheme.light(primary: Color(Constants.primaryGreen()))),
               child: Center(
@@ -279,13 +279,13 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
                 ),
               ),
             ),
-          ),
-          const Expanded(
-            flex: 1,
-            child: SizedBox(),
-          )
-        ],
-      )
+      //     ),
+      //     const Expanded(
+      //       flex: 1,
+      //       child: SizedBox(),
+      //     )
+      //   ],
+      // )
     );
   }
 
@@ -753,7 +753,7 @@ class _BookTourDrawerState extends State<BookTourDrawer> {
           style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 18,
-              color: Color(Constants.primaryGreen())
+               color: Color(Constants.primaryGreen())
           ),),
         content: Container(
           child: Column(

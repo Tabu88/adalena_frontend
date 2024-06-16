@@ -63,7 +63,6 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("$width"),
                   Builder(
                       builder: (context) {
                         return OutlinedButton(

@@ -453,7 +453,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                                   color: Color(Constants.primaryBlue())
                               ),
                             ),
-                          )
+                         )
                         ],
                       ),
                     ),
