@@ -157,7 +157,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
                                     width: 200,
                                   ),),
                                 const Expanded(flex: 2,child: SizedBox(),),
-                                Expanded(flex: 6,child: width > 920 ? WidgetHelper.dashboardTiles() : const SizedBox()),
+                                const Expanded(flex: 6,child: SizedBox()),
                               ],
                             )
                         ),
@@ -1246,7 +1246,7 @@ class _HomeWidgetsState extends State<HomeWidgets> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child:  Container(
@@ -1528,8 +1528,8 @@ class _HomeWidgetsState extends State<HomeWidgets> {
   List<String> _servicesDetails = [
     "Regular blood pressure and weight checks are conducted at scheduled intervals to monitor residents' health. These checkups help track any irregularities or health issues that may arise. The recorded data ensures timely intervention and appropriate medical care.",
     "Residents receive three nutritious meals daily—breakfast, lunch, and dinner. The facility accommodates dietary restrictions and special doctor-prescribed diets to ensure each resident's nutritional needs are met. Additional food items like coffee, tea, and snacks between meals are also provided for added comfort and satisfaction.",
-    "ADALENA ADULT FAMILY HOME LLC specializes in caring for adults with developmental disabilities, providing expert and certified care.An on-site Hoyer lift is available for residents who require assistance with mobility ",
-    "ADALENA ADULT FAMILY HOME LLC provides short-term or respite care with flexible daily rates for stays under a month. The home employs bilingual staff who speak English and Swahili, facilitating better communication with residents",
+    "ADALENA ADULT FAMILY HOME LLC specializes in caring for adults with developmental disabilities, dementia and mental illness, providing expert and certified care.An on-site Hoyer lift is available for residents who require assistance with mobility ",
+    "ADALENA ADULT FAMILY HOME LLC provides short-term or respite care and hospice care with flexible daily rates for stays under a month. The home employs bilingual staff who speak English and Swahili, facilitating better communication with residents",
     "Daily housekeeping services keep the facility clean and organized, including residents' rooms. All standard home utilities, such as electricity, water, and heating, are included in the base price. A diverse range of social and recreational activities is offered weekly to engage residents.  ",
     "The facility provides comprehensive medications management, ensuring residents take their medications on schedule. Caregivers track administration times and manage prescription refills to prevent any lapses. This service is crucial for maintaining the health and stability of residents."
   ];

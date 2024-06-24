@@ -26,8 +26,8 @@ class _FooterWidgetState extends State<FooterWidget> {
   String auntPhone = "+1(206) 806-3698";
   String landLine = "+1(253) 455-7706";
   final Uri _instaUrl = Uri.parse('https://www.instagram.com/adalenaafh/');
-  final Uri _fbUrl = Uri.parse('https://www.google.com/maps/place/47%C2%B005\'16.1%22N+122%C2%B024\'30.3%22W/@47.087797,-122.4109952,17z/data=!3m1!4b1!4m4!3m3!8m2!3d47.087797!4d-122.4084203?hl=en&entry=ttu');
-  final Uri _linkedUrl = Uri.parse('https://www.google.com/maps/place/47%C2%B005\'16.1%22N+122%C2%B024\'30.3%22W/@47.087797,-122.4109952,17z/data=!3m1!4b1!4m4!3m3!8m2!3d47.087797!4d-122.4084203?hl=en&entry=ttu');
+  final Uri _fbUrl = Uri.parse('https://web.facebook.com/people/Adalena-ADULT-Family-Home/61560781965802/');
+  final Uri _linkedUrl = Uri.parse('https://www.linkedin.com/company/adalena-family-home/');
 
 
   void _copyText(BuildContext context, String textToCopy) {
@@ -153,6 +153,35 @@ class _FooterWidgetState extends State<FooterWidget> {
                             onPressed: () async {
                               if (kIsWeb) {
                                 // Check if the platform is web
+                                if (await canLaunch("tel:$auntPhone")) {
+                                  await launch("tel:$auntPhone");
+                                } else {
+                                  throw 'Could not launch tel:$auntPhone';
+                                }
+                              } else {
+                                // For non-web platforms (assume mobile)
+                                if (await canLaunch("tel:$auntPhone")) {
+                                  await launch("tel:$auntPhone");
+                                } else {
+                                  throw 'Could not launch tel:$auntPhone';
+                                }
+                              }
+                            },
+                            child: Text(
+                              "206-806-3698",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 20
+                              ),
+                            ),
+                          ),
+                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
                                 if (await canLaunch("tel:$unclePhone")) {
                               await launch("tel:$unclePhone");
                               } else {
@@ -198,35 +227,6 @@ class _FooterWidgetState extends State<FooterWidget> {
                             },
                             child: Text(
                               "253-455-7706",
-                              style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(Constants.primaryWhite()),
-                                  fontSize: 20
-                              ),
-                            ),
-                          ),
-                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
-                          TextButton(
-                            onPressed: () async {
-                              if (kIsWeb) {
-                                // Check if the platform is web
-                                if (await canLaunch("tel:$auntPhone")) {
-                              await launch("tel:$auntPhone");
-                              } else {
-                              throw 'Could not launch tel:$auntPhone';
-                              }
-                              } else {
-                              // For non-web platforms (assume mobile)
-                              if (await canLaunch("tel:$auntPhone")) {
-                              await launch("tel:$auntPhone");
-                              } else {
-                              throw 'Could not launch tel:$auntPhone';
-                              }
-                              }
-                            },
-                            child: Text(
-                              "206-806-3698",
                               style: TextStyle(
                                   fontStyle: FontStyle.italic,
                                   fontWeight: FontWeight.w600,
@@ -447,6 +447,35 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   onPressed: () async {
                                     if (kIsWeb) {
                                       // Check if the platform is web
+                                      if (await canLaunch("tel:$auntPhone")) {
+                                        await launch("tel:$auntPhone");
+                                      } else {
+                                        throw 'Could not launch tel:$auntPhone';
+                                      }
+                                    } else {
+                                      // For non-web platforms (assume mobile)
+                                      if (await canLaunch("tel:$auntPhone")) {
+                                        await launch("tel:$auntPhone");
+                                      } else {
+                                        throw 'Could not launch tel:$auntPhone';
+                                      }
+                                    }
+                                  },
+                                  child: Text(
+                                    "206-806-3698",
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(Constants.primaryWhite()),
+                                        fontSize: 20
+                                    ),
+                                  ),
+                                ),
+                                Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                                TextButton(
+                                  onPressed: () async {
+                                    if (kIsWeb) {
+                                      // Check if the platform is web
                                       if (await canLaunch("tel:$unclePhone")) {
                                     await launch("tel:$unclePhone");
                                     } else {
@@ -492,35 +521,6 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   },
                                   child: Text(
                                     "253-455-7706",
-                                    style: TextStyle(
-                                        fontStyle: FontStyle.italic,
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(Constants.primaryWhite()),
-                                        fontSize: 20
-                                    ),
-                                  ),
-                                ),
-                                Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
-                                TextButton(
-                                  onPressed: () async {
-                                    if (kIsWeb) {
-                                      // Check if the platform is web
-                                      if (await canLaunch("tel:$auntPhone")) {
-                                    await launch("tel:$auntPhone");
-                                    } else {
-                                    throw 'Could not launch tel:$auntPhone';
-                                    }
-                                    } else {
-                                    // For non-web platforms (assume mobile)
-                                    if (await canLaunch("tel:$auntPhone")) {
-                                    await launch("tel:$auntPhone");
-                                    } else {
-                                    throw 'Could not launch tel:$auntPhone';
-                                    }
-                                    }
-                                  },
-                                  child: Text(
-                                    "206-806-3698",
                                     style: TextStyle(
                                         fontStyle: FontStyle.italic,
                                         fontWeight: FontWeight.w600,
@@ -754,6 +754,35 @@ class _FooterWidgetState extends State<FooterWidget> {
                             onPressed: () async {
                               if (kIsWeb) {
                                 // Check if the platform is web
+                                if (await canLaunch("tel:$auntPhone")) {
+                                  await launch("tel:$auntPhone");
+                                } else {
+                                  throw 'Could not launch tel:$auntPhone';
+                                }
+                              } else {
+                                // For non-web platforms (assume mobile)
+                                if (await canLaunch("tel:$auntPhone")) {
+                                  await launch("tel:$auntPhone");
+                                } else {
+                                  throw 'Could not launch tel:$auntPhone';
+                                }
+                              }
+                            },
+                            child: Text(
+                              "206-806-3698",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(Constants.primaryWhite()),
+                                  fontSize: 18
+                              ),
+                            ),
+                          ),
+                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
+                          TextButton(
+                            onPressed: () async {
+                              if (kIsWeb) {
+                                // Check if the platform is web
                                 if (await canLaunch("tel:$unclePhone")) {
                               await launch("tel:$unclePhone");
                               } else {
@@ -799,35 +828,6 @@ class _FooterWidgetState extends State<FooterWidget> {
                             },
                             child: Text(
                               "253-455-7706",
-                              style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(Constants.primaryWhite()),
-                                  fontSize: 18
-                              ),
-                            ),
-                          ),
-                          Text("/",style: TextStyle(color: Color(Constants.primaryWhite()), fontSize: 18),),
-                          TextButton(
-                            onPressed: () async {
-                              if (kIsWeb) {
-                                // Check if the platform is web
-                                if (await canLaunch("tel:$auntPhone")) {
-                              await launch("tel:$auntPhone");
-                              } else {
-                              throw 'Could not launch tel:$auntPhone';
-                              }
-                              } else {
-                              // For non-web platforms (assume mobile)
-                              if (await canLaunch("tel:$auntPhone")) {
-                         await launch("tel:$auntPhone");
-                              } else {
-                              throw 'Could not launch tel:$auntPhone';
-                              }
-                              }
-                            },
-                            child: Text(
-                              "206-806-3698",
                               style: TextStyle(
                                   fontStyle: FontStyle.italic,
                                   fontWeight: FontWeight.w600,

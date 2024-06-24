@@ -105,66 +105,7 @@ class _AmenitiesWidgetsState extends State<AmenitiesWidgets> {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            leading: const SizedBox(),
-            pinned: false,
-            floating: false,
-            primary: true,
-            expandedHeight: 600,
-            flexibleSpace: FlexibleSpaceBar(
-                background:  Stack(
-                    children: [
-                      Container(
-                          decoration: const BoxDecoration(),
-                          height: 600,
-                          width: double.infinity,
-                          child: Image.asset("assets/images/Adalena_house_backgrnd.jpeg",fit: BoxFit.cover,)
-                      ),
-                      Container(
-                        height: 600,
-                        width: double.infinity,
-                        color: Color(Constants.primaryBlue()).withOpacity(0.5),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 30),
-                        child: Align(
-                            alignment: Alignment.topCenter,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: Image.asset(
-                                    "assets/images/Blue House bottom text.png",
-                                    height: 150,
-                                    width: 220,
-                                  ),),
-                                const Expanded(flex: 2,child: SizedBox(),),
-                                Expanded(flex: 6,child: width > 920 ? WidgetHelper.dashboardTiles() : const SizedBox()),
-                              ],
-                            )
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 30),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "ADALENA FAMILY HOME ",
-                            style: TextStyle(
-                                fontSize: 45,
-                                // fontWeight: FontWeight.w600,
-                                color: Color(Constants.primaryWhite())
-                            ),
-                          ),
-                        ),
-                      )
-                    ]
-                )
-            ),
-            actions: [const SizedBox()],
-          ),
+
           SliverToBoxAdapter(
             child: width > 870
                 ? Container(

@@ -26,7 +26,6 @@ class AdalenaController extends GetxController {
   Rx<String> bookEmail = "".obs;
   Rx<String> errorMessage = "".obs;
   Rx<String> validateError = "".obs;
-  RxList<NewsModel> newsValidationResponse = <NewsModel>[].obs;
 
   resetController(){
     contactName = ''.obs;
@@ -59,10 +58,9 @@ class AdalenaController extends GetxController {
         "datetime": bookDateTime.value,
         "media": bookMedia.value,
       };
-
-      final response = await HttpHelper().completePost("", jsonData);
-      print("passed");
-      if (response["statusCode"].toString() == "200") {
+      print(jsonData);
+      final response = await HttpHelper().completePost("/SendTour", jsonData);
+      if ((response is bool) == true) {
         return true;
       } else {
         errorMessage.value = response["message"].toString();
@@ -85,9 +83,9 @@ class AdalenaController extends GetxController {
       };
       print(jsonData);
 
-      final response = await HttpHelper().completePost("", jsonData);
+      final response = await HttpHelper().completePost("/SendContact", jsonData);
       print(response);
-      if (response["statusCode"].toString() == "200") {
+      if ((response is bool) == true) {
         return true;
       } else {
         errorMessage.value = response["message"].toString();
@@ -98,29 +96,5 @@ class AdalenaController extends GetxController {
     }
   }
 
-  Future<bool> getNewsApi() async {
-
-    try {
-      var response = await http.get(Uri.parse("https://newsapi.org/v2/everything?q=HealthCare&from=2024-05-31&sortBy=popularity&apiKey=${Constants.APIKEY}"));
-
-
-      final jsonData = jsonDecode(response.body);
-     print(jsonData);
-      if(jsonData["status"] == "ok"){
-        List<NewsModel> _newsResponse =
-        (jsonData["articles"] as List<dynamic>)
-            .map((e) => NewsModel.fromJson(e))
-            .toList();
-
-        newsValidationResponse.value =  _newsResponse;
-        return true;
-      } else {
-        return false;
-      }
-    } catch(e) {
-      print("Error: $e");
-      return false;
-    }
-  }
 
 }

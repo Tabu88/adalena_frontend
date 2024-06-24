@@ -192,8 +192,8 @@ class _TourWidgetState extends State<TourWidget> {
                               icon: BitmapDescriptor.defaultMarker,
                               position: _center,
                               infoWindow:  InfoWindow(
-                                  title:  "9525 N Fort Washington Rd",
-                                snippet: "9525 N Fort Washington Rd, Fresno, CA 92730, USA ",
+                                  title:  "1525 186th St Ct E",
+                                snippet: "1525 186th St Ct E , Spanaway WA 98387",
                                 onTap:  _launchMap,
                               )
                             )
@@ -531,8 +531,8 @@ class _TourWidgetState extends State<TourWidget> {
                                   icon: BitmapDescriptor.defaultMarker,
                                   position: _center,
                                   infoWindow:  InfoWindow(
-                                    title:  "9525 N Fort Washington Rd",
-                                    snippet: "9525 N Fort Washington Rd, Fresno, CA 92730, USA ",
+                                    title:  "1525 186th St Ct E",
+                                    snippet: "1525 186th St Ct E , Spanaway WA 98387",
                                     onTap:  _launchMap,
                                   )
                               )
@@ -1048,9 +1048,9 @@ class _TourWidgetState extends State<TourWidget> {
                                     icon: BitmapDescriptor.defaultMarker,
                                     position: _center,
                                     infoWindow: InfoWindow(
-                                      title: "9525 N Fort Washington Rd",
+                                      title: "1525 186th St Ct E",
                                       snippet:
-                                      "9525 N Fort Washington Rd, Fresno, CA 92730, USA ",
+                                      "1525 186th St Ct E , Spanaway WA 98387",
                                       onTap: _launchMap,
                                     ))
                               },

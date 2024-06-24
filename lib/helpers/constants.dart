@@ -15,7 +15,7 @@ class Constants {
     return 0xFFFFFFFF;
   }
 
-  static const ENDPOINT = "https://localhost:7216/api/Email/Send";
+  static const ENDPOINT = "https://backend-adalena.xyz/api/Email";
 
   static const APIKEY = "19bb0d08198644d5a18f85085e15f9f3";
 }

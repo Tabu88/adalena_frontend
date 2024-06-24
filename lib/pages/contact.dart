@@ -1,4 +1,5 @@
 import 'package:adult_family_home/controller/adalena_controller.dart';
+import 'package:adult_family_home/pages/email_formatter.dart';
 import 'package:adult_family_home/widgets/form_label_widget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,8 +41,8 @@ class _ContactWidgetsState extends State<ContactWidgets> {
   String auntPhone = "+1(206) 806-3698";
   String landLine = "+1(253) 455-7706";
   final Uri _instaUrl = Uri.parse('https://www.instagram.com/adalenaafh/');
-  final Uri _fbUrl = Uri.parse('https://www.google.com/maps/place/47%C2%B005\'16.1%22N+122%C2%B024\'30.3%22W/@47.087797,-122.4109952,17z/data=!3m1!4b1!4m4!3m3!8m2!3d47.087797!4d-122.4084203?hl=en&entry=ttu');
-  final Uri _linkedUrl = Uri.parse('https://www.google.com/maps/place/47%C2%B005\'16.1%22N+122%C2%B024\'30.3%22W/@47.087797,-122.4109952,17z/data=!3m1!4b1!4m4!3m3!8m2!3d47.087797!4d-122.4084203?hl=en&entry=ttu');
+  final Uri _fbUrl = Uri.parse('https://web.facebook.com/people/Adalena-ADULT-Family-Home/61560781965802/');
+  final Uri _linkedUrl = Uri.parse('https://www.linkedin.com/company/adalena-family-home/');
 
 
   _init(){
@@ -59,6 +60,19 @@ class _ContactWidgetsState extends State<ContactWidgets> {
          duration: Duration(seconds: 3),
        ),
     );
+  }
+
+  int? _validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 3;
+    }
+    // Regular expression for validating an email address
+    String pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value)) {
+      return 2;
+    }
+    return 1;
   }
 
   Future<void> _launchInsta() async {
@@ -112,6 +126,9 @@ class _ContactWidgetsState extends State<ContactWidgets> {
       await _adalenaController.contactAdalena().then((value){
         if((value is bool) == true) {
           WidgetHelper.snackbar("Success", "Contact request sent!");
+          Get.toNamed(
+            Routes.getValueForRoute(RoutesEnum.home),
+          );
         } else {
           WidgetHelper.snackbar("Failed", "An error occurred: ${_adalenaController.errorMessage.value}");
         }
@@ -204,66 +221,6 @@ class _ContactWidgetsState extends State<ContactWidgets> {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            leading: const SizedBox(),
-            pinned: false,
-            floating: false,
-            primary: true,
-            expandedHeight: 600,
-            flexibleSpace: FlexibleSpaceBar(
-                background:  Stack(
-                    children: [
-                      Container(
-                          decoration: BoxDecoration(),
-                          height: 600,
-                          width: double.infinity,
-                          child: Image.asset("assets/images/Adalena_house_backgrnd.jpeg",fit: BoxFit.cover,)
-                      ),
-                      Container(
-                        height: 600,
-                        width: double.infinity,
-                        color: Color(Constants.primaryBlue()).withOpacity(0.5),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 30),
-                        child: Align(
-                            alignment: Alignment.topCenter,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: Image.asset(
-                                    "assets/images/Blue House bottom text.png",
-                                    height: 150,
-                                    width: 220,
-                                  ),),
-                                const Expanded(flex: 2,child: SizedBox(),),
-                                Expanded(flex: 6,child: width > 920 ? WidgetHelper.dashboardTiles() : const SizedBox()),
-                              ],
-                            )
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 30),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "ADALENA FAMILY HOME ",
-                            style: TextStyle(
-                                fontSize: 45,
-                                // fontWeight: FontWeight.w600,
-                                color: Color(Constants.primaryWhite())
-                            ),
-                          ),
-                        ),
-                      )
-                    ]
-                )
-            ),
-            actions: [const SizedBox()],
-          ),
           SliverToBoxAdapter(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -395,14 +352,19 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                       ),
                                       onChanged: (v) {
                                         _adalenaController.contactEmail.value = v;
+
                                       },
                                       validator: (v) {
-                                        if (v == null || v.isEmpty) {
-                                          return 'Enter your email address';
-                                        } else {
+                                        var result = _validateEmail(v);
+                                        if(result == 1) {
                                           return null;
+                                        } else  if (result == 2) {
+                                          return 'Enter a valid email';
+                                        } else {
+                                          return 'Enter an email address';
                                         }
                                       },
+                                      // inputFormatters: [EmailInputFormatter()],
                                       keyboardType: TextInputType.emailAddress,
                                     ),
                                   ),
@@ -662,7 +624,7 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                             Color(Constants.primaryBlue())),
                                         onPressed: _continue,
                                         child: Text(
-                                          "Contact Us Today",
+                                          "Submit",
                                           style: TextStyle(
                                             color: Color(Constants.primaryGreen()),
                                             fontWeight: FontWeight.bold,
@@ -695,9 +657,9 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                         position: _center,
                                         infoWindow: InfoWindow(
                                             title:
-                                            "9525 N Fort Washington Rd",
+                                            "1525 186th St Ct E",
                                             snippet:
-                                            "9525 N Fort Washington Rd, Fresno , CA 92730, USA ",
+                                            "1525 186th St Ct E , Spanaway WA 98387",
                                             onTap: _launchMap))
                                   },
                                 ),
@@ -722,6 +684,35 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                         const SizedBox(
                                           width: 15,
                                         ),
+                                        TextButton(
+                                          onPressed: () async {
+                                            if (kIsWeb) {
+                                              // Check if the platform is web
+                                              if (await canLaunch("tel:$auntPhone")) {
+                                                await launch("tel:$auntPhone");
+                                              } else {
+                                                throw 'Could not launch tel:$auntPhone';
+                                              }
+                                            } else {
+                                              // For non-web platforms (assume mobile)
+                                              if (await canLaunch("tel:$auntPhone")) {
+                                                await launch("tel:$auntPhone");
+                                              } else {
+                                                throw 'Could not launch tel:$auntPhone';
+                                              }
+                                            }
+                                          },
+                                          child: Text(
+                                            "206-806-3698",
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(Constants.primaryBlue()),
+                                                fontSize: 20
+                                            ),
+                                          ),
+                                        ),
+                                        Text("/",style: TextStyle(color: Color(Constants.primaryBlue()), fontSize: 18),),
                                         TextButton(
                                           onPressed: () async {
                                             if (kIsWeb) {
@@ -771,35 +762,6 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                           },
                                           child: Text(
                                             "253-455-7706",
-                                            style: TextStyle(
-                                                fontStyle: FontStyle.italic,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(Constants.primaryBlue()),
-                                                fontSize: 20
-                                            ),
-                                          ),
-                                        ),
-                                        const Text("/"),
-                                        TextButton(
-                                          onPressed: () async {
-                                            if (kIsWeb) {
-                                              // Check if the platform is web
-                                              if (await canLaunch("tel:$auntPhone")) {
-                                                await launch("tel:$auntPhone");
-                                              } else {
-                                                throw 'Could not launch tel:$auntPhone';
-                                              }
-                                            } else {
-                                              // For non-web platforms (assume mobile)
-                                              if (await canLaunch("tel:$auntPhone")) {
-                                                await launch("tel:$auntPhone");
-                                              } else {
-                                                throw 'Could not launch tel:$auntPhone';
-                                              }
-                                            }
-                                          },
-                                          child: Text(
-                                            "206-806-3698",
                                             style: TextStyle(
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w600,
@@ -914,9 +876,9 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                   icon: BitmapDescriptor.defaultMarker,
                                   position: _center,
                                   infoWindow: InfoWindow(
-                                      title: "9525 N Fort Washington Rd",
+                                      title: "1525 186th St Ct E",
                                       snippet:
-                                      "9525 N Fort Washington Rd, Fresno , CA 92730, USA ",
+                                      "1525 186th St Ct E , Spanaway WA 98387",
                                       onTap: _launchMap))
                             },
                           ),
@@ -941,6 +903,35 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                   const SizedBox(
                                     width: 15,
                                   ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      if (kIsWeb) {
+                                        // Check if the platform is web
+                                        if (await canLaunch("tel:$auntPhone")) {
+                                          await launch("tel:$auntPhone");
+                                        } else {
+                                          throw 'Could not launch tel:$auntPhone';
+                                        }
+                                      } else {
+                                        // For non-web platforms (assume mobile)
+                                        if (await canLaunch("tel:$auntPhone")) {
+                                          await launch("tel:$auntPhone");
+                                        } else {
+                                          throw 'Could not launch tel:$auntPhone';
+                                        }
+                                      }
+                                    },
+                                    child: Text(
+                                      "206-806-3698",
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(Constants.primaryBlue()),
+                                          fontSize: 20
+                                      ),
+                                    ),
+                                  ),
+                                  Text("/",style: TextStyle(color: Color(Constants.primaryBlue()), fontSize: 18),),
                                   TextButton(
                                     onPressed: () async {
                                       if (kIsWeb) {
@@ -990,35 +981,6 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                     },
                                     child: Text(
                                       "253-455-7706",
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(Constants.primaryBlue()),
-                                          fontSize: 20
-                                      ),
-                                    ),
-                                  ),
-                                  Text("/",style: TextStyle(color: Color(Constants.primaryBlue()), fontSize: 18),),
-                                  TextButton(
-                                    onPressed: () async {
-                                      if (kIsWeb) {
-                                        // Check if the platform is web
-                                        if (await canLaunch("tel:$auntPhone")) {
-                                          await launch("tel:$auntPhone");
-                                        } else {
-                                          throw 'Could not launch tel:$auntPhone';
-                                        }
-                                      } else {
-                                        // For non-web platforms (assume mobile)
-                                        if (await canLaunch("tel:$auntPhone")) {
-                                          await launch("tel:$auntPhone");
-                                        } else {
-                                          throw 'Could not launch tel:$auntPhone';
-                                        }
-                                      }
-                                    },
-                                    child: Text(
-                                      "206-806-3698",
                                       style: TextStyle(
                                           fontStyle: FontStyle.italic,
                                           fontWeight: FontWeight.w600,
@@ -1147,8 +1109,7 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                           BorderSide(color: Colors.red)),
                                     ),
                                     onChanged: (v) {
-                                      _adalenaController.contactName.value =
-                                          v;
+                                      _adalenaController.contactName.value = v;
                                     },
                                     validator: (v) {
                                       if (v == null|| v.isEmpty) {
@@ -1204,12 +1165,16 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                           v;
                                     },
                                     validator: (v) {
-                                      if (v == null|| v.isEmpty) {
-                                        return 'Enter your email address';
-                                      } else {
+                                      var result = _validateEmail(v);
+                                      if(result == 1) {
                                         return null;
+                                      } else  if (result == 2) {
+                                        return 'Enter a valid email';
+                                      } else {
+                                        return 'Enter an email address';
                                       }
                                     },
+                                    // inputFormatters: [EmailInputFormatter()],
                                   ),
                                 ),
                                 const SizedBox(
@@ -1272,7 +1237,7 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                   title: "Reason for contacting us",
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: DropdownButtonFormField2<String>(
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
@@ -1469,7 +1434,7 @@ class _ContactWidgetsState extends State<ContactWidgets> {
                                           Color(Constants.primaryBlue())),
                                       onPressed: _continue,
                                       child: Text(
-                                        "Contact Us Today",
+                                        "Submit",
                                         style: TextStyle(
                                           color:
                                           Color(Constants.primaryGreen()),

@@ -38,34 +38,6 @@ class WidgetHelper{
     );
   }
 
-  static Widget dashboardTiles (){
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        WidgetHelper.tileElement("Home", () {
-          Get.toNamed(
-            Routes.getValueForRoute(RoutesEnum.home),
-          );
-        }),
-        WidgetHelper.tileElement("Amenities", (){
-          Get.toNamed(
-            Routes.getValueForRoute(RoutesEnum.amenities),
-          );
-        }),
-        WidgetHelper.tileElement("Contact Us", (){
-          Get.toNamed(
-            Routes.getValueForRoute(RoutesEnum.contactUs),
-          );
-        }),
-        WidgetHelper.tileElement("About Us", (){
-          Get.toNamed(
-            Routes.getValueForRoute(RoutesEnum.aboutUs),
-          );
-        }),
-      ],
-    );
-  }
-
   static Widget tileElement(String title, Function() navigation ){
     return Container (
       padding: EdgeInsets.symmetric(horizontal: 10,),

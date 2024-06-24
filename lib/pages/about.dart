@@ -106,72 +106,6 @@ class _AboutWidgetsState extends State<AboutWidgets> {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            leading: const SizedBox(),
-            pinned: false,
-            floating: false,
-            primary: true,
-            expandedHeight: 600,
-            flexibleSpace: FlexibleSpaceBar(
-                background:  Stack(
-                    children: [
-                      Container(
-                          decoration: BoxDecoration(),
-                          height: 600,
-                          width: double.infinity,
-                          child: Image.asset("assets/images/Adalena_house_backgrnd.jpeg",fit: BoxFit.cover,)
-                      ),
-                      Container(
-                        height: 600,
-                        width: double.infinity,
-                        color: Color(Constants.primaryBlue()).withOpacity(0.5),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 30),
-                        child: Align(
-                            alignment: Alignment.topCenter,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: Image.asset(
-                                      "assets/images/Blue House bottom text.png",
-                                      height: 150,
-                                      width: 150,
-                                    ),
-                                ),
-                                const Expanded(flex: 2,child: SizedBox(),),
-                                Expanded(
-                                    flex: 6,
-                                    child: width > 920
-                                        ? WidgetHelper.dashboardTiles()
-                                        : const SizedBox()
-                                ),
-                              ],
-                            )
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:15.0, vertical: 30),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "ADALENA FAMILY HOME ",
-                            style: TextStyle(
-                                fontSize: 45,
-                                // fontWeight: FontWeight.w600,
-                                color: Color(Constants.primaryWhite())
-                            ),
-                          ),
-                        ),
-                      )
-                    ]
-                )
-            ),
-            actions: [const SizedBox()],
-          ),
           SliverToBoxAdapter(
             child: Container(
               color: Color(Constants.primaryBlue()),
@@ -381,12 +315,12 @@ class _AboutWidgetsState extends State<AboutWidgets> {
               children: [
                 Padding(
                   padding: EdgeInsets.all(10),
-                  child: Expanded(
-                    child: Container(
+                  child: Container(
                       decoration: BoxDecoration(
                           color: Color(Constants.primaryBlue()),
                           borderRadius: BorderRadius.circular(10)
                       ),
+                      width: double.infinity,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -415,13 +349,11 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                         ],
                       ),
                     ),
-                  ),
                 ),
                 const SizedBox(height: 13,),
                 Padding(
                   padding: EdgeInsets.all(10),
-                  child: Expanded(
-                    child: Container(
+                  child: Container(
                       decoration: BoxDecoration(
                           color: Color(Constants.primaryWhite()),
                           borderRadius: BorderRadius.circular(10),
@@ -429,6 +361,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                               color: Color(Constants.primaryBlue())
                           )
                       ),
+                      width: double.infinity,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -457,7 +390,6 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                         ],
                       ),
                     ),
-                  ),
                 ),
                 const SizedBox(height: 25,),
               ],
@@ -486,7 +418,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                     Container(
                       height: 400,
                       width: 400,
-                      child: Image.asset("assets/images/adalena_exp.png",fit: BoxFit.cover,),
+                      child: Image.asset("assets/images/founders.jpeg",fit: BoxFit.cover,),
                     ),
                     const SizedBox(width: 15,),
                     Container(
@@ -525,7 +457,7 @@ class _AboutWidgetsState extends State<AboutWidgets> {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
                   child: Image.asset(
-                    "assets/images/adalena_exp.png",
+                    "assets/images/founders.jpeg",
                     fit: BoxFit.cover,
                   ),
                 ),
