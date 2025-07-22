@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adalenaafh.com/sitemap.xml

@@ -19,7 +19,7 @@ class HttpHelper {
 
   Future<dynamic> completePost(String uri, dynamic body) async {
     try {
-      print("reached");
+
       final response = await http.post(Uri.parse("${Constants.ENDPOINT}$uri"),
         headers: _headers,
         body: jsonEncode(body)
@@ -34,12 +34,10 @@ class HttpHelper {
         return false;
       } else if(response.statusCode == 404) {
         var message = apiResponse["message"];
-        
         return false;
       } else if(response.statusCode == 500) {
         return false;
       } else {
-
         var message = apiResponse["message"] ?? "This unknown error occurred try again later";
         return message;
       }
