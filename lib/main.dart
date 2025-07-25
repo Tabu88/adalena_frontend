@@ -10,6 +10,7 @@ import 'helpers/routes_enums.dart';
 bool isdarkMode = Get.isDarkMode;
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MyApp());
 }
 
